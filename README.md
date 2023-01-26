@@ -1,6 +1,7 @@
 # Budgeting App
 
 ## Introduction
+### Functionality
 This application seeks to allow users to calculate their monthly expenditure by 
 recording their daily expenses.  For each expense, users will be able to state 
 the date of purchase, the category it falls under, and whether it is an abnormal
@@ -12,9 +13,11 @@ pre-set budget, after subtracting all expenses. There will be a feature to split
 and records how much money other people owe the user. Users can also create a savings goal
 where they contribute a set amount of money each month towards that goal.
 
+### Targeted Users
 The application is designed for university students or people that need to manage their
 spending habits.
 
+### Personal Significance
 I have a tendency to overspend when I don't keep track of my expenses. But after trying multiple 
 budgeting methods to no avail, I decided to create my own application to keep track of my own expenses, with
 features that I feel are important for planning future budgeting plans.
