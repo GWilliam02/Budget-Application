@@ -19,15 +19,12 @@ I have a tendency to overspend when I don't keep track of my expenses. But after
 budgeting methods to no avail, I decided to create my own application to keep track of my own expenses, with
 features that I feel are important for planning future budgeting plans.
 
+## User Stories
 
-[//]: # ()
-[//]: # (A *bulleted* list:)
+Phase 0:
 
-[//]: # (- item 1)
+- As a user, I want to be able to **add** an expense to my list of expenses
 
-[//]: # (- item 2)
+- As a user, I want to be able to **view** every purchase in my list of expenses
 
-[//]: # (- item 3)
-
-[//]: # ()
-[//]: # (An example of text with **bold** and *italic* fonts.  )
+- As a user, I want to be able to **view** the details of an expense.
