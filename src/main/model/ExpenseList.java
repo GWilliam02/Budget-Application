@@ -7,9 +7,10 @@ import java.util.ArrayList;
 public class ExpenseList {
 
     private ArrayList<Expense> expenseList;
-    private Integer currentExpenses;
+    private int currentExpenses;
 
     //private String month;
+
 
     public ExpenseList() {
         expenseList = new ArrayList<>();
@@ -59,6 +60,11 @@ public class ExpenseList {
         return expenseList; /*Stub*/
     }
 
+
+
+    public int getCurrentExpenses() {
+        return currentExpenses;
+    }
 
 
 }
