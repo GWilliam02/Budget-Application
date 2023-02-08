@@ -1,30 +1,39 @@
 package model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Expense {
 
-    private float cost;
-    private String name;
-    private String comments;
-    private String purchaseType;
-    private Date purchaseDate;
+    protected Integer cost;
+    protected String name;
+    protected String comments;
+    protected String purchaseType;
+    protected LocalDateTime purchaseDate;
+    protected Boolean recurring;
 
-    public Expense(float cost, String name, String comments, String purchaseType, Date purchaseDate) {
+
+    public Expense(Integer cost,
+                   String name,
+                   String comments,
+                   String purchaseType,
+                   LocalDateTime purchaseDate,
+                   Boolean recurring) {
+
         this.cost = cost;
         this.name = name;
         this.comments = comments;
         this.purchaseType = purchaseType;
         this.purchaseDate = purchaseDate;
+        this.recurring = recurring;
     }
 
     //Getters and Setters
 
-    public double getCost() {
+    public Integer getCost() {
         return cost;
     }
 
-    public void setCost(float cost) {
+    public void setCost(Integer cost) {
         this.cost = cost;
     }
 
@@ -52,11 +61,19 @@ public class Expense {
         this.purchaseType = purchaseType;
     }
 
-    public Date getPurchaseDate() {
+    public LocalDateTime getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(Date purchaseDate) {
+    public void setPurchaseDate(LocalDateTime purchaseDate) {
         this.purchaseDate = purchaseDate;
+    }
+
+    public Boolean getRecurring() {
+        return recurring;
+    }
+
+    public void setRecurring(Boolean recurring) {
+        this.recurring = recurring;
     }
 }

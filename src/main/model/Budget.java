@@ -1,41 +1,46 @@
 package model;
 
+import java.util.Scanner;
+
 public class Budget {
 
-    private float budget;
-    private float currentExpenses;
-
+    private int budget;
     private ExpenseList expenseList;
+    private Scanner scanner;
 
-    //Initialization of Budget with 0 currentExpense and empty ExpenseList
-    public Budget(float budget) {
-        this.budget = budget;
-        currentExpenses = 0;
+    //Initialization of Budget and empty ExpenseList
+    public Budget() {
+        scanner = new Scanner(System.in);
         expenseList = new ExpenseList();
-    }
-
-    public void calculateExpenses(ExpenseList expenseList) {
-        //Iterates over each Expense in ExpenseList
-        // Calculate the sum of each expense
-
-    }
-
-
-
-
-    public float getBudget() {
-        return budget;
-    }
-
-    public void setBudget(float budget) {
         this.budget = budget;
+        initializeApp();
     }
 
-    public float getCurrentExpenses() {
-        return currentExpenses;
+    private void initializeApp() {
+        setUpBudget();
+        mainDirectory();
     }
 
-    public void setCurrentExpenses(float currentExpenses) {
-        this.currentExpenses = currentExpenses;
+
+    private void mainDirectory() {
+        
     }
+
+
+
+    private void setUpBudget(){
+        System.out.println("Please entire your budget for this month (In Cents)");
+        budget = Integer.parseInt(scanner.nextLine());
+        System.out.println("You have set your budget to: " + budget + " Cents");
+    }
+
+
+
+
+
+
+    public static void main(String[] args) {
+        new Budget();
+    }
+
 }

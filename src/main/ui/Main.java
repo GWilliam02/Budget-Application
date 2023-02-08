@@ -1,16 +1,20 @@
 package ui;
 
-import model.Expense;
-
-import java.util.*;
+import model.ExpenseList;
 
 
 public class Main {
 
+    private ExpenseList expenseList;
+
     public static void main(String[] args) {
 
-        System.out.println("Welcome to the QuickBudget App!");
-        System.out.println("Please set your desired budget");
+        // Where to put code to ask for console inputs?
+        // App = new App
+        // Data structure for sorting lists besides ArrayList
+        // Data Abstraction for classes with a common set of variables.
+        //
+
 
     }
 }

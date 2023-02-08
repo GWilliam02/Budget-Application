@@ -1,24 +1,29 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 //May change from ArrayList to TreeSet for easier sorting
 
 public class ExpenseList {
 
     private ArrayList<Expense> expenseList;
+    private Integer currentExpenses;
+
+    //private String month;
 
     public ExpenseList() {
         expenseList = new ArrayList<>();
+        currentExpenses = 0;
     }
 
     public void addExpense(Expense expense) {
         expenseList.add(expense);
+        currentExpenses += expense.getCost();
     }
 
     public void removeExpense(Expense expense) {
         expenseList.remove(expense);
+        currentExpenses -= expense.getCost();
     }
 
     public void editExpense(Expense expense) {
@@ -27,6 +32,14 @@ public class ExpenseList {
         //Print out current data on the selected Expense
         //Prompt user to edit any fields
         //Confirm changes and print updated Expense
+    }
+
+    public double calculateExpenses() {
+        double result = 0;
+        for (Expense expense: expenseList) {
+            result += expense.getCost();
+        }
+        return result;
     }
 
 
@@ -45,4 +58,7 @@ public class ExpenseList {
     public ArrayList<Expense> sortByLatestPurchase() {
         return expenseList; /*Stub*/
     }
+
+
+
 }
