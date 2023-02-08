@@ -27,7 +27,7 @@ public class Budget {
 
         while (isAppActive) {
             printDirectoryMessage();
-            nextOperation = Integer.parseInt(scanner.nextLine());
+            nextOperation = scanner.nextInt();
 
             if (nextOperation == 1) {
                 setUpBudget();}
@@ -40,12 +40,37 @@ public class Budget {
     }
 
     private void addNewExpense(){
+        int cost;
+        String name, comments, purchaseType, purchaseDate;
+        boolean recurring;
+
         System.out.println("Add new expense!");
+
+        System.out.println("Cost:");
+        cost = scanner.nextInt();
+
+        System.out.println("Name:");
+        name = scanner.next();
+
+        System.out.println("Comments:");
+        comments = scanner.next();
+
+        System.out.println("Purchase Type:");
+        purchaseType = scanner.next();
+
+        System.out.println("Purchase Date:");
+        purchaseDate = scanner.next();
+
+        System.out.println("Recurring? (true or false)");
+        recurring = scanner.nextBoolean();
+
+        expenseList.addExpense(new Expense(cost,name,comments,purchaseType,purchaseDate,recurring));
+        System.out.println("Successfully added new expense!");
     }
 
     private void setUpBudget(){
         System.out.println("Please entire your budget for this month (In Cents)");
-        budget = Integer.parseInt(scanner.nextLine());
+        budget = scanner.nextInt();
         System.out.println("You have set your budget to: " + budget + " Cents");
     }
 
@@ -63,6 +88,7 @@ public class Budget {
         System.out.println("1. Change Budget");
         System.out.println("2. Add new expense");
         System.out.println("3. Quit app");
+        System.out.println();
     }
 
 

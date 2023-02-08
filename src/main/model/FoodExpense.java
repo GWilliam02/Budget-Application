@@ -13,7 +13,7 @@ public class FoodExpense extends Expense{
                 "Save On Foods",
                 "Groceries",
                 "Food",
-                LocalDateTime.of(2023, 2, 17, 23, 59, 59),
+                "January 6",
                 false);
     }
 

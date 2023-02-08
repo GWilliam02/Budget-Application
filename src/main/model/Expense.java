@@ -1,14 +1,13 @@
 package model;
 
-import java.time.LocalDateTime;
-
 public class Expense {
 
     protected Integer cost;
     protected String name;
     protected String comments;
     protected String purchaseType;
-    protected LocalDateTime purchaseDate;
+    protected String purchaseDate;
+//    protected LocalDateTime purchaseDate;
     protected Boolean recurring;
 
 
@@ -16,7 +15,7 @@ public class Expense {
                    String name,
                    String comments,
                    String purchaseType,
-                   LocalDateTime purchaseDate,
+                   String purchaseDate,
                    Boolean recurring) {
 
         this.cost = cost;
@@ -61,11 +60,11 @@ public class Expense {
         this.purchaseType = purchaseType;
     }
 
-    public LocalDateTime getPurchaseDate() {
+    public String getPurchaseDate() {
         return purchaseDate;
     }
 
-    public void setPurchaseDate(LocalDateTime purchaseDate) {
+    public void setPurchaseDate(String purchaseDate) {
         this.purchaseDate = purchaseDate;
     }
 
