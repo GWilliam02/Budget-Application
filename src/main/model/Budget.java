@@ -29,10 +29,12 @@ public class Budget {
             printDirectoryMessage();
             nextOperation = Integer.parseInt(scanner.nextLine());
 
-            switch (nextOperation){
-                case 1: setUpBudget();
-                case 2: addNewExpense();
-                case 3: isAppActive=false;
+            if (nextOperation == 1) {
+                setUpBudget();}
+            else if (nextOperation == 2) {
+                addNewExpense();
+            } else if (nextOperation == 3) {
+                isAppActive = false;
             }
         }
     }
@@ -50,17 +52,18 @@ public class Budget {
     public void printDirectoryMessage() {
         System.out.println("Welcome to the main directory");
         System.out.println("Summary of Budget");
+        System.out.println();
         System.out.println("Current Budget: "+ budget);
         //may add feature to automatically specify which month
         System.out.println("Total Expenses for this month: "+ expenseList.getCurrentExpenses());
+        System.out.println("Remaining Balance in Budget: "+ (budget- expenseList.getCurrentExpenses()));
+
         System.out.println();
         System.out.println("Please select the following options below (By entering the corresponding number):");
         System.out.println("1. Change Budget");
         System.out.println("2. Add new expense");
         System.out.println("3. Quit app");
     }
-
-
 
 
     public static void main(String[] args) {
