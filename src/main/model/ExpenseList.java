@@ -1,11 +1,13 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 //May change from ArrayList to TreeSet for easier sorting
 
 public class ExpenseList {
 
+    private Scanner scanner = new Scanner(System.in);
     private ArrayList<Expense> expenseList;
     private int currentExpenses;
 
@@ -27,7 +29,49 @@ public class ExpenseList {
         currentExpenses -= expense.getCost();
     }
 
-    public void editExpense(Expense expense) {
+    public void editExpense(int index) { //index is > >0
+        int nextOperation;
+        boolean save = false;
+        Expense expense = expenseList.get(index-1);
+
+        while (!save) {
+            System.out.println("Details for Expense " + index);
+            expense.printExpense();
+            System.out.println("What would you like to edit? (1-6)");
+            System.out.println("Enter 7 to save changes");
+            nextOperation = scanner.nextInt();
+            switch (nextOperation) {
+                case 1: {
+                    System.out.println("Edit cost (Cents)");
+                    expense.setCost(scanner.nextInt());
+                }
+                case 2: {
+                    System.out.println("Edit Name");
+                    expense.setName(scanner.next());
+                }
+                case 3: {
+                    System.out.println("Edit Comments");
+                    expense.setComments(scanner.next());
+                }
+                case 4: {
+                    System.out.println("Edit Purchase Type");
+                    expense.setPurchaseType(scanner.next());
+                }
+                case 5: {
+                    System.out.println("Edit Purchase Date");
+                    expense.setPurchaseDate(scanner.next());
+                }
+                case 6: {
+                    System.out.println("Recurring?");
+                    expense.setRecurring(scanner.nextBoolean());
+                }
+                case 7: {
+                    expenseList.set(index-1,expense);
+                    save = true;
+                }
+            }
+        }
+
         //Get expense that user wants to change
         //Create reference to that expense object
         //Print out current data on the selected Expense

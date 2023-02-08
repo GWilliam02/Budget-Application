@@ -26,6 +26,15 @@ public class Expense {
         this.recurring = recurring;
     }
 
+    public void printExpense() {
+        System.out.println("1. Cost: " + cost);
+        System.out.println("2. Name: " + name);
+        System.out.println("3. Comments: " + comments);
+        System.out.println("4. Purchase Type: " + purchaseType);
+        System.out.println("5. Purchase Date: " + purchaseDate);
+        System.out.println("6. Recurring: " + recurring);
+    }
+
     //Getters and Setters
 
     public Integer getCost() {
