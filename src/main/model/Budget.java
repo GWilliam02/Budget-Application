@@ -62,13 +62,19 @@ public class Budget {
                     expenseList.editExpense();
                     break;
                 case 4:
-                    expenseList.removeExpense();
+                    expenseList.removeSelectedExpense();
                     break;
                 case 5:
                     exitDirectory = true;
                     break;
             }
         }
+    }
+
+    private void setUpBudget() {
+        System.out.println("Please entire your budget for this month (In Cents)");
+        budget = scanner.nextInt();
+        System.out.println("You have set your budget to: " + budget + " Cents");
     }
 
     private void printExpenseDirMessage() {
@@ -84,12 +90,6 @@ public class Budget {
         System.out.println("3. Edit existing expense");
         System.out.println("4. Remove expense");
         System.out.println("5. Return to main directory");
-    }
-
-    private void setUpBudget() {
-        System.out.println("Please entire your budget for this month (In Cents)");
-        budget = scanner.nextInt();
-        System.out.println("You have set your budget to: " + budget + " Cents");
     }
 
     public void printMainDirMessage() {

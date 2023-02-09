@@ -26,9 +26,13 @@ features that I feel are important for planning future budgeting plans.
 
 Phase 0:
 
-- As a user, I want to be able to **set** my monthly budget
-- As a user, I want to be able to **add** an expense to my list of expenses
+As a user, I want to be able to:
+- **set** my monthly budget
+- **add** an expense to my list of expenses
 
-- As a user, I want to be able to **view** every purchase in my list of expenses
+- **view** every purchase in my list of expenses
 
-- As a user, I want to be able to **view** the details of an expense.
+- **view** the details of an expense.
+- 
+
+
