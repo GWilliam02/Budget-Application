@@ -35,6 +35,7 @@ public class ExpenseList {
         Expense expense = expenseList.get(index-1);
 
         while (!save) {
+            System.out.println();
             System.out.println("Details for Expense " + index);
             expense.printExpense();
             System.out.println("What would you like to edit? (1-6)");
@@ -71,12 +72,36 @@ public class ExpenseList {
                 }
             }
         }
+    }
 
-        //Get expense that user wants to change
-        //Create reference to that expense object
-        //Print out current data on the selected Expense
-        //Prompt user to edit any fields
-        //Confirm changes and print updated Expense
+    public void addNewExpense(){
+        int cost;
+        String name, comments, purchaseType, purchaseDate;
+        boolean recurring;
+
+        System.out.println("Add new expense!");
+
+        System.out.println("Cost:");
+        cost = scanner.nextInt();
+        scanner.nextLine();
+
+        System.out.println("Name:");
+        name = scanner.nextLine();
+
+        System.out.println("Comments:");
+        comments = scanner.nextLine();
+
+        System.out.println("Purchase Type:");
+        purchaseType = scanner.nextLine();
+
+        System.out.println("Purchase Date:");
+        purchaseDate = scanner.nextLine();
+
+        System.out.println("Recurring? (true or false)");
+        recurring = scanner.nextBoolean();
+
+        addExpense(new Expense(cost,name,comments,purchaseType,purchaseDate,recurring));
+        System.out.println("Successfully added new expense!");
     }
 
     public double calculateExpenses() {
@@ -105,10 +130,12 @@ public class ExpenseList {
     }
 
 
-
     public int getCurrentExpenses() {
         return currentExpenses;
     }
 
+    public int getExpenseCount() {
+        return expenseList.size();
+    }
 
 }
