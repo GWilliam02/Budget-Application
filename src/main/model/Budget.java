@@ -8,8 +8,6 @@ public class Budget {
     private ExpenseList expenseList;
     private Scanner scanner;
 
-    private int nextOperation;
-    private boolean exitDirectory;
 
     //Initialization of Budget and empty ExpenseList
     public Budget() {
@@ -24,7 +22,8 @@ public class Budget {
     }
 
     private void mainDirectory() {
-        exitDirectory = false;
+        int nextOperation;
+        boolean exitDirectory = false;
 
         while (!exitDirectory) {
             printMainDirMessage();
@@ -33,16 +32,43 @@ public class Budget {
             switch (nextOperation) {
                 case 1:
                     setUpBudget();
+                    break;
                 case 2:
-                    expenseList.addNewExpense();
+                    expenseDirectory();
+                    break;
                 case 3:
                     exitDirectory = true;
+                    break;
             }
         }
     }
 
     private void expenseDirectory() {
-        
+        int nextOperation;
+        boolean exitDirectory = false;
+
+        while (!exitDirectory) {
+            printExpenseDirMessage();
+            nextOperation = scanner.nextInt();
+
+            switch (nextOperation) {
+                case 1:
+                    expenseList.printExpenses();
+                    break;
+                case 2:
+                    expenseList.addNewExpense();
+                    break;
+                case 3:
+                    expenseList.editExpense();
+                    break;
+                case 4:
+                    expenseList.removeExpense();
+                    break;
+                case 5:
+                    exitDirectory = true;
+                    break;
+            }
+        }
     }
 
     private void printExpenseDirMessage() {
@@ -56,7 +82,8 @@ public class Budget {
         System.out.println("1. View all expenses");
         System.out.println("2. Add new expense");
         System.out.println("3. Edit existing expense");
-        System.out.println("4. Return to main directory");
+        System.out.println("4. Remove expense");
+        System.out.println("5. Return to main directory");
     }
 
     private void setUpBudget() {

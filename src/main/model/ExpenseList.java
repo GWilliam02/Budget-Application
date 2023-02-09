@@ -13,26 +13,33 @@ public class ExpenseList {
 
     //private String month;
 
-
     public ExpenseList() {
         expenseList = new ArrayList<>();
         currentExpenses = 0;
     }
 
-    public void addExpense(Expense expense) {
+    private void addExpense(Expense expense) {
         expenseList.add(expense);
         currentExpenses += expense.getCost();
     }
 
-    public void removeExpense(Expense expense) {
+    private void removeExpense(Expense expense) {
         expenseList.remove(expense);
         currentExpenses -= expense.getCost();
     }
 
-    public void editExpense(int index) { //index is > >0
+    public void removeExpense() {
+        int index = selectExpense();
+        Expense expense = expenseList.get(index - 1);
+        removeExpense(expense);
+    }
+
+    public void editExpense() {
         int nextOperation;
         boolean save = false;
-        Expense expense = expenseList.get(index-1);
+
+        int index = selectExpense();
+        Expense expense = expenseList.get(index - 1);
 
         while (!save) {
             System.out.println();
@@ -45,36 +52,44 @@ public class ExpenseList {
                 case 1: {
                     System.out.println("Edit cost (Cents)");
                     expense.setCost(scanner.nextInt());
+                    break;
                 }
                 case 2: {
                     System.out.println("Edit Name");
                     expense.setName(scanner.next());
+                    break;
                 }
                 case 3: {
                     System.out.println("Edit Comments");
                     expense.setComments(scanner.next());
+                    break;
                 }
                 case 4: {
                     System.out.println("Edit Purchase Type");
                     expense.setPurchaseType(scanner.next());
+                    break;
                 }
                 case 5: {
                     System.out.println("Edit Purchase Date");
                     expense.setPurchaseDate(scanner.next());
+                    break;
                 }
                 case 6: {
                     System.out.println("Recurring?");
                     expense.setRecurring(scanner.nextBoolean());
+                    break;
                 }
                 case 7: {
-                    expenseList.set(index-1,expense);
+                    expenseList.set(index - 1, expense);
+                    System.out.println("Changes Saved!");
                     save = true;
+                    break;
                 }
             }
         }
     }
 
-    public void addNewExpense(){
+    public void addNewExpense() {
         int cost;
         String name, comments, purchaseType, purchaseDate;
         boolean recurring;
@@ -100,13 +115,37 @@ public class ExpenseList {
         System.out.println("Recurring? (true or false)");
         recurring = scanner.nextBoolean();
 
-        addExpense(new Expense(cost,name,comments,purchaseType,purchaseDate,recurring));
+        addExpense(new Expense(cost, name, comments, purchaseType, purchaseDate, recurring));
         System.out.println("Successfully added new expense!");
     }
 
-    public double calculateExpenses() {
-        double result = 0;
-        for (Expense expense: expenseList) {
+    public void printExpenses() {
+        int index = 1;
+        if (expenseList.size() == 0) {
+            System.out.println("No expenses");
+        } else {
+            for (Expense expense : expenseList) {
+                System.out.println(
+                        index + "."
+                                + " Name: " + expense.getName()
+                                + ", Cost: " + expense.getCost()
+                                + ", Purchase Type: " + expense.getPurchaseType()
+                                + ", Purchase Date: " + expense.getRecurring()
+                                + ", Recurring: " + expense.getRecurring());
+                index++;
+            }
+        }
+    }
+
+    private int selectExpense() {
+        printExpenses();
+        System.out.println("Please select an expense");
+        return scanner.nextInt();
+    }
+
+    public int calculateExpenses() {
+        int result = 0;
+        for (Expense expense : expenseList) {
             result += expense.getCost();
         }
         return result;
