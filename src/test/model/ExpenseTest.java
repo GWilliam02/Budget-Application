@@ -10,7 +10,7 @@ public class ExpenseTest {
     @Test
     public void testConstructor() {
 //        LocalDateTime dateTime = LocalDateTime.of(2023, 2, 17, 23, 59, 59);
-        Expense e1 = new Expense(999,
+        Expense e1 = new Food(999,
                 "Save On Foods",
                 "Groceries",
                 "Food",

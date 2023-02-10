@@ -2,6 +2,7 @@ package ui.tools;
 
 import model.Expense;
 import model.ExpenseList;
+import model.Food;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -74,7 +75,7 @@ public class ExpenseListTools {
         System.out.println("Recurring? (true or false)");
         recurring = scanner.nextBoolean();
 
-        expenseList.addExpense(new Expense(cost, name, comments, purchaseType, purchaseDate, recurring));
+        expenseList.addExpense(new Food(cost, name, comments, purchaseType, purchaseDate, recurring));
         System.out.println("Successfully added new expense!");
     }
 

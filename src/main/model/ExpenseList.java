@@ -3,7 +3,6 @@ package model;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-//May change from ArrayList to TreeSet for easier sorting
 
 public class ExpenseList {
 
@@ -61,6 +60,8 @@ public class ExpenseList {
     public ArrayList<Expense> getExpenseList() {
         return expenseList;
     }
+
+
 //    public ArrayList<Expense> sortByDecreasingPrice() {
 //        return expenseList; /*Stub*/
 //    }
