@@ -42,24 +42,6 @@ public class ExpenseList {
         return result;
     }
 
-
-//    public ArrayList<Expense> sortByDecreasingPrice() {
-//        return expenseList; /*Stub*/
-//    }
-//
-//    public ArrayList<Expense> sortByAscendingPrice() {
-//        return expenseList; /*Stub*/
-//    }
-//
-//    public ArrayList<Expense> sortByPurchaseType() {
-//        return expenseList; /*Stub*/
-//    }
-//
-//    public ArrayList<Expense> sortByLatestPurchase() {
-//        return expenseList; /*Stub*/
-//    }
-
-
     public int getCurrentExpenses() {
         return currentExpenses;
     }
@@ -79,4 +61,19 @@ public class ExpenseList {
     public ArrayList<Expense> getExpenseList() {
         return expenseList;
     }
+//    public ArrayList<Expense> sortByDecreasingPrice() {
+//        return expenseList; /*Stub*/
+//    }
+//
+//    public ArrayList<Expense> sortByAscendingPrice() {
+//        return expenseList; /*Stub*/
+//    }
+//
+//    public ArrayList<Expense> sortByPurchaseType() {
+//        return expenseList; /*Stub*/
+//    }
+//
+//    public ArrayList<Expense> sortByLatestPurchase() {
+//        return expenseList; /*Stub*/
+//    }
 }
