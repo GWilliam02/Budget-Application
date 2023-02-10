@@ -1,18 +1,23 @@
 package model;
 
+import ui.tools.ExpenseListTools;
+
 import java.util.Scanner;
 
 public class Budget {
 
     private int budget;
-    private ExpenseList expenseList;
+//    private ExpenseList expenseList;
     private Scanner scanner;
+
+    private ExpenseListTools expenseListTools;
 
 
     //Initialization of Budget and empty ExpenseList
     public Budget() {
         scanner = new Scanner(System.in);
-        expenseList = new ExpenseList();
+//        expenseList = new ExpenseList();
+        expenseListTools = new ExpenseListTools();
         initializeApp();
     }
 
@@ -53,16 +58,16 @@ public class Budget {
 
             switch (nextOperation) {
                 case 1:
-                    expenseList.printExpenses();
+                    expenseListTools.printExpensesUI();
                     break;
                 case 2:
-                    expenseList.addNewExpense();
+                    expenseListTools.addNewExpenseUI();
                     break;
                 case 3:
-                    expenseList.editExpense();
+                    expenseListTools.editExpenseUI();
                     break;
                 case 4:
-                    expenseList.removeSelectedExpense();
+                    expenseListTools.removeExpenseUI();
                     break;
                 case 5:
                     exitDirectory = true;
@@ -81,8 +86,8 @@ public class Budget {
         System.out.println("Welcome to the Expenses directory");
         System.out.println("Summary of Expenses");
         System.out.println();
-        System.out.println("Number of expenses: " + expenseList.getExpenseCount());
-        System.out.println("Total cost: " + expenseList.getCurrentExpenses());
+        System.out.println("Number of expenses: " + expenseListTools.getCurrentExpenses());
+        System.out.println("Total cost: " + expenseListTools.getCurrentExpenses());
         System.out.println();
         System.out.println("Please select the following options below (By entering the corresponding number):");
         System.out.println("1. View all expenses");
@@ -98,8 +103,8 @@ public class Budget {
         System.out.println();
         System.out.println("Current Budget: " + budget);
         //may add feature to automatically specify which month
-        System.out.println("Total Expenses for this month: " + expenseList.getCurrentExpenses());
-        System.out.println("Remaining Balance in Budget: " + (budget - expenseList.getCurrentExpenses()));
+        System.out.println("Total Expenses for this month: " + expenseListTools.getCurrentExpenses());
+        System.out.println("Remaining Balance in Budget: " + (budget - expenseListTools.getCurrentExpenses()));
 
         System.out.println();
         System.out.println("Please select the following options below (By entering the corresponding number):");

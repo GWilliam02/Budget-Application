@@ -1,8 +1,5 @@
 package model;
 
-import ui.tools.ExpenseListTools;
-import ui.tools.ExpenseTools;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,49 +11,27 @@ public class ExpenseList {
     private ArrayList<Expense> expenseList;
     private int currentExpenses;
 
-    private ExpenseTools expenseTools;
-    private ExpenseListTools expenseListTools;
-
     //private String month;
 
     public ExpenseList() {
         expenseList = new ArrayList<>();
         currentExpenses = 0;
-        expenseTools = new ExpenseTools();
-        expenseListTools = new ExpenseListTools();
     }
 
-    private void addExpense(Expense expense) {
+    public void addExpense(Expense expense) {
         expenseList.add(expense);
         currentExpenses += expense.getCost();
     }
 
-    private void removeExpense(Expense expense) {
+    public void removeExpense(Expense expense) {
         expenseList.remove(expense);
         currentExpenses -= expense.getCost();
     }
 
-
-    public void removeSelectedExpense() {
-        int index = expenseListTools.selectExpenseUI(expenseList);
-        Expense expense = expenseList.get(index - 1);
-        removeExpense(expense);
-    }
-
-    public void editExpense() {
-        int index = expenseListTools.selectExpenseUI(expenseList);
-        Expense expense = expenseList.get(index - 1);
-        expenseListTools.editExpenseUI(expense, index);
-        calculateExpenses();
+    public void editExpense(Expense expense, int index) {
+        expenseList.set(index, expense);
+        currentExpenses = calculateExpenses();
         }
-
-
-    public void addNewExpense() {
-        Expense expense = expenseListTools.addNewExpenseUI();
-        expenseList.add(expense);
-        currentExpenses += expense.getCost();
-        System.out.println("Successfully added new expense!");
-    }
 
 
     public int calculateExpenses() {
@@ -65,10 +40,6 @@ public class ExpenseList {
             result += expense.getCost();
         }
         return result;
-    }
-
-    public void printExpenses() {
-        expenseListTools.printExpensesUI(expenseList);
     }
 
 
@@ -93,8 +64,19 @@ public class ExpenseList {
         return currentExpenses;
     }
 
+    public void setCurrentExpenses(int currentExpenses) {
+        this.currentExpenses = currentExpenses;
+    }
+
     public int getExpenseCount() {
         return expenseList.size();
     }
 
+    public Expense getExpenseAtIndex(int index) {
+        return expenseList.get(index);
+    }
+
+    public ArrayList<Expense> getExpenseList() {
+        return expenseList;
+    }
 }

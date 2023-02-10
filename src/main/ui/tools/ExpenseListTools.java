@@ -1,27 +1,36 @@
 package ui.tools;
 
 import model.Expense;
+import model.ExpenseList;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ExpenseListTools {
 
-    Scanner scanner;
-    ExpenseTools expenseTools;
+    private Scanner scanner;
+    private ExpenseTools expenseTools;
+    private ExpenseList expenseList;
+
 
     public ExpenseListTools() {
         scanner = new Scanner(System.in);
         expenseTools = new ExpenseTools();
+        expenseList = new ExpenseList();
     }
 
-    public int selectExpenseUI(ArrayList<Expense> expenses) {
-        printExpensesUI(expenses);
+    public int getCurrentExpenses(){
+        return expenseList.getCurrentExpenses();
+    }
+
+    public int selectExpenseUI() {
+        printExpensesUI();
         System.out.println("Please select an expense");
         return scanner.nextInt();
     }
 
-    public void printExpensesUI(ArrayList<Expense> expenses) {
+    public void printExpensesUI() {
+        ArrayList<Expense> expenses = expenseList.getExpenseList();
         int index = 1;
         if (expenses.size() == 0) {
             System.out.println("No expenses");
@@ -39,7 +48,7 @@ public class ExpenseListTools {
         }
     }
 
-    public Expense addNewExpenseUI(){
+    public void addNewExpenseUI(){
         int cost;
         String name, comments, purchaseType, purchaseDate;
         boolean recurring;
@@ -65,10 +74,20 @@ public class ExpenseListTools {
         System.out.println("Recurring? (true or false)");
         recurring = scanner.nextBoolean();
 
-        return new Expense(cost, name, comments, purchaseType, purchaseDate, recurring);
+        expenseList.addExpense(new Expense(cost, name, comments, purchaseType, purchaseDate, recurring));
+        System.out.println("Successfully added new expense!");
     }
 
-    public void editExpenseUI(Expense expense, int index) {
+    public void removeExpenseUI() {
+        int index = selectExpenseUI();
+        Expense expense = expenseList.getExpenseAtIndex(index - 1);
+        expenseList.removeExpense(expense);
+    }
+
+    public void editExpenseUI() {
+        int index = selectExpenseUI();
+        Expense expense = expenseList.getExpenseAtIndex(index-1);
+
         int nextOperation;
         boolean save = false;
 
@@ -117,5 +136,6 @@ public class ExpenseListTools {
                 }
             }
         }
+        expenseList.editExpense(expense, index-1);
     }
 }

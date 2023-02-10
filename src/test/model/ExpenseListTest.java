@@ -1,16 +1,15 @@
 package model;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 public class ExpenseListTest {
 
-    private ExpenseList elist;
+    private ExpenseList expenseList;
     private Expense e1;
 
     @BeforeEach
     private void setup(){
-        elist = new ExpenseList();
+        expenseList = new ExpenseList();
         e1 = new Expense(1,
                 "safeway",
                 "Test comments",
@@ -19,10 +18,14 @@ public class ExpenseListTest {
                 true);
     }
 
-    @Test
-    public void addExpense(){
+//    @Test
+//    public void testRemoveExpense(){
+//        expenseList.removeExpense(e1);
+//    }
 
-    }
-
+//    @Test
+//    public void testEditExpense() {
+//        expenseList.editExpense();
+//    }
 
 }
