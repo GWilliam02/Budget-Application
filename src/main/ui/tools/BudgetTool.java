@@ -1,10 +1,8 @@
-package model;
-
-import ui.tools.ExpenseListTools;
+package ui.tools;
 
 import java.util.Scanner;
 
-public class Budget {
+public class BudgetTool {
 
     private int budget;
 //    private ExpenseList expenseList;
@@ -14,7 +12,7 @@ public class Budget {
 
 
     //Initialization of Budget and empty ExpenseList
-    public Budget() {
+    public BudgetTool() {
         scanner = new Scanner(System.in);
 //        expenseList = new ExpenseList();
         expenseListTools = new ExpenseListTools();

@@ -5,23 +5,29 @@ import java.util.Scanner;
 
 
 public class ExpenseList {
-
     private Scanner scanner = new Scanner(System.in);
     private ArrayList<Expense> expenseList;
     private int currentExpenses;
 
     //private String month;
 
+    //EFFECTS: currentExpenses is set to 0,
+    //          initializes empty expense list.
     public ExpenseList() {
         expenseList = new ArrayList<>();
         currentExpenses = 0;
     }
 
+    // REQUIRES: expense is not null
+    // MODIFIES: this
+    // EFFECTS: adds expense to expense list,
+    //          increases current expense by expense cost
     public void addExpense(Expense expense) {
         expenseList.add(expense);
         currentExpenses += expense.getCost();
     }
 
+    //
     public void removeExpense(Expense expense) {
         expenseList.remove(expense);
         currentExpenses -= expense.getCost();
