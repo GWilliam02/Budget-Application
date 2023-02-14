@@ -11,7 +11,4 @@ public class Food extends Expense{
         super(cost, name, comments, purchaseType, purchaseDate, recurring);
     }
 
-    public void splitBill() {
-        System.out.println(cost);
-    }
 }

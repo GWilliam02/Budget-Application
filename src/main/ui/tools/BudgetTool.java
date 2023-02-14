@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class BudgetTool {
 
     private int budget;
-    private Scanner scanner;
+    private final Scanner scanner;
 
-    private ExpenseListTools expenseListTools;
+    private final ExpenseListTools expenseListTools;
 
 
     //Initialization of Budget and empty ExpenseList
