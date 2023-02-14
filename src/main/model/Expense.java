@@ -7,7 +7,6 @@ public abstract class Expense {
     protected String comments;
     protected String purchaseType;
     protected String purchaseDate;
-//    protected LocalDateTime purchaseDate;
     protected Boolean recurring;
 
 

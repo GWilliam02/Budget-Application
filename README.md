@@ -35,14 +35,4 @@ As a user, I want to be able to:
 - **view** the details of an expense.
 
 
-To-Do:
-
-- Specification (Effects, requires, modifies)
-- Dummy Data
-
-Ideas:
-- Monthly record. Display last item in list of records as default
-- Bill splitting - Budget class
-- 
-
 
