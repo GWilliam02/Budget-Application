@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Wallet {
 
@@ -10,19 +11,81 @@ public class Wallet {
 
     public Wallet() {
         cash = 0;
-        bankBalance =0;
+        bankBalance = 0;
         cards = new ArrayList<>();
     }
 
-    public boolean withdrawCash() {
-        return true;
-    }
-    public boolean depositCash() {
-        return true;
+    // REQUIRES: amount is greater than 0
+    //           bankBalance - amount >= 0
+    // MODIFIES: this
+    // EFFECTS: subtracts bankBalance by amount
+    //          increases cash by amount
+    //          Produces true if withdraw successful
+    public boolean withdrawCash(int amount) {
+        if (bankBalance - amount >= 0) {
+            bankBalance -= amount;
+            cash += amount;
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public void addCreditCard() {
-        
+    // REQUIRES: amount is greater than 0
+    //           cash - amount >= 0
+    // MODIFIES: this
+    // EFFECTS: increases bankBalance by amount
+    //          subtracts cash by amount
+    //          Produces true if deposit successful
+    public boolean depositCash(int amount) {
+        if (cash- amount >= 0) {
+            bankBalance += amount;
+            cash -= amount;
+            return true;
+        } else {
+            return false;
+        }
     }
 
+    // REQUIRES: cc is not null
+    // MODIFIES: this
+    // EFFECTS: adds credit card (cc) to cards
+    public void addCreditCard(CreditCard cc) {
+        cards.add(cc);
+    }
+
+    // REQUIRES: cc is not null
+    // MODIFIES: this
+    // EFFECTS: remove credit card (cc) from cards
+    public void removeCreditCard(CreditCard cc) {
+        cards.remove(cc);
+    }
+
+    // REQUIRES: parameter matches name of a card in list
+    // EFFECTS: returns CreditCard object with given name
+    public CreditCard takeOutCard(String name) {
+        CreditCard result = null;
+        for (CreditCard cc : cards) {
+            if (Objects.equals(cc.getName(), name)) {
+                result = cc;
+            }
+        }
+        return result;
+    }
+
+    public int getCash() {
+        return cash;
+    }
+
+    public ArrayList<CreditCard> getCards() {
+        return cards;
+    }
+
+    public int getBankBalance() {
+        return bankBalance;
+    }
+
+    public void setBankBalance(int bankBalance) {
+        this.bankBalance = bankBalance;
+    }
 }

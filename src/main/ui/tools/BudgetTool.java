@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class BudgetTool {
 
     private int budget;
-//    private ExpenseList expenseList;
     private Scanner scanner;
 
     private ExpenseListTools expenseListTools;
@@ -14,7 +13,6 @@ public class BudgetTool {
     //Initialization of Budget and empty ExpenseList
     public BudgetTool() {
         scanner = new Scanner(System.in);
-//        expenseList = new ExpenseList();
         expenseListTools = new ExpenseListTools();
         initializeApp();
     }
