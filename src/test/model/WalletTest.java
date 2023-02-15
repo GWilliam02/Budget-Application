@@ -78,4 +78,10 @@ public class WalletTest {
         assertEquals(2, wallet.getCards().size());
     }
 
+    @Test
+    public void testSetCash() {
+        wallet.setCash(200);
+        assertEquals(200, wallet.getCash());
+    }
+
 }

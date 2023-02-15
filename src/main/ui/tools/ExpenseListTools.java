@@ -24,6 +24,10 @@ public class ExpenseListTools {
         return expenseList.getCurrentExpenses();
     }
 
+    public int getNumberOfExpenses() {
+        return expenseList.getExpenseCount();
+    }
+
     public int selectExpenseUI() {
         printExpensesUI();
         System.out.println("Please select an expense");

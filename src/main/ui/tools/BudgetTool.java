@@ -1,24 +1,27 @@
 package ui.tools;
 
+
 import java.util.Scanner;
 
 public class BudgetTool {
 
-    private int budget;
     private final Scanner scanner;
-
     private final ExpenseListTools expenseListTools;
+    private final WalletTools walletTools;
+    private int budget;
 
 
     //Initialization of Budget and empty ExpenseList
     public BudgetTool() {
         scanner = new Scanner(System.in);
         expenseListTools = new ExpenseListTools();
+        walletTools = new WalletTools();
         initializeApp();
     }
 
     private void initializeApp() {
         setUpBudget();
+        walletTools.setUpWallet();
         mainDirectory();
     }
 
@@ -41,6 +44,34 @@ public class BudgetTool {
                     exitDirectory = true;
                     break;
             }
+        }
+    }
+
+    private void walletDirectory() {
+        int nextOperation;
+        boolean exitDirectory = false;
+
+        while (!exitDirectory) {
+            printWalletDirMessage();
+            nextOperation = scanner.nextInt();
+
+            switch (nextOperation) {
+                case 1:
+                    walletTools.setUpWalletBank();
+                    break;
+                case 2:
+                    walletTools.withdrawCashUI();
+                    break;
+                case 3:
+                    walletTools.depositCashUI();
+                    break;
+                case 4:
+                    System.out.println("Manage credit cards");
+                case 5:
+                    exitDirectory = true;
+                    break;
+            }
+
         }
     }
 
@@ -73,16 +104,31 @@ public class BudgetTool {
     }
 
     private void setUpBudget() {
-        System.out.println("Please entire your budget for this month (In Cents)");
+        System.out.println("Please enter your budget for this month (In Cents)");
         budget = scanner.nextInt();
         System.out.println("You have set your budget to: " + budget + " Cents");
+    }
+
+    private void printWalletDirMessage() {
+        System.out.println("Welcome to the Wallet directory");
+        System.out.println("Summary of Wallet");
+        System.out.println();
+        System.out.println("Cash: " + walletTools.getCashBalance());
+        System.out.println("Bank Balance " + walletTools.getBankBalance());
+        System.out.println();
+        System.out.println("Please select the following options below (By entering the corresponding number):");
+        System.out.println("1. Change Bank Balance");
+        System.out.println("2. Withdraw Cash");
+        System.out.println("3. Deposit Cash");
+        System.out.println("4. Manage Credit Cards");
+        System.out.println("5. Return to main directory");
     }
 
     private void printExpenseDirMessage() {
         System.out.println("Welcome to the Expenses directory");
         System.out.println("Summary of Expenses");
         System.out.println();
-        System.out.println("Number of expenses: " + expenseListTools.getCurrentExpenses());
+        System.out.println("Number of expenses: " + expenseListTools.getNumberOfExpenses());
         System.out.println("Total cost: " + expenseListTools.getCurrentExpenses());
         System.out.println();
         System.out.println("Please select the following options below (By entering the corresponding number):");

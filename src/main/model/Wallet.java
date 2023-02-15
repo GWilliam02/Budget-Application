@@ -88,4 +88,8 @@ public class Wallet {
     public void setBankBalance(int bankBalance) {
         this.bankBalance = bankBalance;
     }
+
+    public void setCash(int cash) {
+        this.cash = cash;
+    }
 }
