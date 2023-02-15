@@ -20,7 +20,7 @@ public class ExpenseListTools {
         expenseList = new ExpenseList();
     }
 
-    public int getCurrentExpenses(){
+    public int getCurrentExpenses() {
         return expenseList.getCurrentExpenses();
     }
 
@@ -49,9 +49,12 @@ public class ExpenseListTools {
         }
     }
 
-    public void addNewExpenseUI(){
+    public void addNewExpenseUI() {
         int cost;
-        String name, comments, purchaseType, purchaseDate;
+        String name;
+        String comments;
+        String purchaseType;
+        String purchaseDate;
         boolean recurring;
 
         System.out.println("Add new expense!");
@@ -87,11 +90,9 @@ public class ExpenseListTools {
 
     public void editExpenseUI() {
         int index = selectExpenseUI();
-        Expense expense = expenseList.getExpenseAtIndex(index-1);
-
+        Expense expense = expenseList.getExpenseAtIndex(index - 1);
         int nextOperation;
         boolean save = false;
-
         while (!save) {
             System.out.println();
             System.out.println("Details for Expense " + index);
@@ -99,44 +100,34 @@ public class ExpenseListTools {
             System.out.println("What would you like to edit? (1-6)");
             System.out.println("Enter 7 to save changes");
             nextOperation = scanner.nextInt();
-            switch (nextOperation) {
-                case 1: {
-                    System.out.println("Edit cost (Cents)");
-                    expense.setCost(scanner.nextInt());
-                    break;
-                }
-                case 2: {
-                    System.out.println("Edit Name");
-                    expense.setName(scanner.next());
-                    break;
-                }
-                case 3: {
-                    System.out.println("Edit Comments");
-                    expense.setComments(scanner.next());
-                    break;
-                }
-                case 4: {
-                    System.out.println("Edit Purchase Type");
-                    expense.setPurchaseType(scanner.next());
-                    break;
-                }
-                case 5: {
-                    System.out.println("Edit Purchase Date");
-                    expense.setPurchaseDate(scanner.next());
-                    break;
-                }
-                case 6: {
-                    System.out.println("Recurring?");
-                    expense.setRecurring(scanner.nextBoolean());
-                    break;
-                }
-                case 7: {
-                    System.out.println("Changes Saved!");
-                    save = true;
-                    break;
-                }
+            if (nextOperation == 7) {
+                break;
+            } else {
+                editExpenseLoop(expense, nextOperation);
             }
         }
-        expenseList.editExpense(expense, index-1);
+        expenseList.editExpense(expense, index - 1);
+    }
+
+    public void editExpenseLoop(Expense expense, int nextOperation) {
+        if (nextOperation == 1) {
+            System.out.println("Edit cost (Cents)");
+            expense.setCost(scanner.nextInt());
+        } else if (nextOperation == 2) {
+            System.out.println("Edit Name");
+            expense.setName(scanner.next());
+        } else if (nextOperation == 3) {
+            System.out.println("Edit Comments");
+            expense.setComments(scanner.next());
+        } else if (nextOperation == 4) {
+            System.out.println("Edit Purchase Type");
+            expense.setPurchaseType(scanner.next());
+        } else if (nextOperation == 5) {
+            System.out.println("Edit Purchase Date");
+            expense.setPurchaseDate(scanner.next());
+        } else if (nextOperation == 6) {
+            System.out.println("Recurring?");
+            expense.setRecurring(scanner.nextBoolean());
+        }
     }
 }

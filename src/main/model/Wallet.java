@@ -38,7 +38,7 @@ public class Wallet {
     //          subtracts cash by amount
     //          Produces true if deposit successful
     public boolean depositCash(int amount) {
-        if (cash- amount >= 0) {
+        if (cash - amount >= 0) {
             bankBalance += amount;
             cash -= amount;
             return true;

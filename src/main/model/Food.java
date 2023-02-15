@@ -1,8 +1,8 @@
 package model;
 
-public class Food extends Expense{
+public class Food extends Expense {
 
-    public Food (Integer cost,
+    public Food(Integer cost,
                 String name,
                 String comments,
                 String purchaseType,

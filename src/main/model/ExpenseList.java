@@ -44,7 +44,7 @@ public class ExpenseList {
     public void editExpense(Expense expense, int index) {
         expenseList.set(index, expense);
         currentExpenses = calculateExpenses();
-        }
+    }
 
     // EFFECTS: returns the current expense in cents
     public int calculateExpenses() {
