@@ -14,7 +14,7 @@ public class ExpenseListTest {
     private Expense e2;
 
     @BeforeEach
-    private void setup(){
+    private void setup() {
         expenseList = new ExpenseList();
         e1 = new Food(100,
                 "safeway",
@@ -42,7 +42,7 @@ public class ExpenseListTest {
     }
 
     @Test
-    public void testRemoveExpense(){
+    public void testRemoveExpense() {
         expenseList.removeExpense(e1);
         assertEquals(1, expenseList.getExpenseCount());
         assertEquals(500, expenseList.getCurrentExpenses());
@@ -67,7 +67,6 @@ public class ExpenseListTest {
         ArrayList<Expense> expList = expenseList.getExpenseList();
         assertEquals(2, expList.size());
     }
-
 
 
 }

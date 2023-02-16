@@ -72,7 +72,7 @@ public class WalletTest {
     }
 
     @Test
-    public void testTakeOutCard(){
+    public void testTakeOutCard() {
         CreditCard cc3 = wallet.takeOutCard("TD Amex");
         assertEquals(cc2, cc3);
         assertEquals(2, wallet.getCards().size());
