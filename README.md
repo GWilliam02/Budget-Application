@@ -34,5 +34,9 @@ As a user, I want to be able to:
 
 - **view** the details of an expense.
 
+- **edit** the details of an expense.
+
+- **remove** an expense.
+
 
 
