@@ -41,6 +41,9 @@ public class BudgetTool {
                     expenseDirectory();
                     break;
                 case 3:
+                    walletDirectory();
+                    break;
+                case 4:
                     exitDirectory = true;
                     break;
             }
@@ -66,7 +69,7 @@ public class BudgetTool {
                     walletTools.depositCashUI();
                     break;
                 case 4:
-                    System.out.println("Manage credit cards");
+                    System.out.println("Work in Progress");
                 case 5:
                     exitDirectory = true;
                     break;
@@ -152,7 +155,8 @@ public class BudgetTool {
         System.out.println("Please select the following options below (By entering the corresponding number):");
         System.out.println("1. Change Budget");
         System.out.println("2. Manage Expenses");
-        System.out.println("3. Quit app");
+        System.out.println("3. Open Wallet");
+        System.out.println("4. Quit app");
         System.out.println();
     }
 
