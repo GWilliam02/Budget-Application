@@ -8,9 +8,8 @@ the date of purchase, the category it falls under, and whether it is an abnormal
 purchase or not. Each of the expenses will be displayed in a list with features 
 to sort the list according to categories or price. Each recorded expense can be 
 edited or deleted, and users can set up recurring expenses. There will also be a 
-balance indicating  how much money the user has left in their 
-pre-set budget, after subtracting all expenses. There will be a feature to split bills with people 
-and records how much money other people owe the user. Users can also create a savings goal
+balance indicating how much money the user has left in their 
+pre-set budget, after subtracting all expenses. Users can also create a savings goal
 where they contribute a set amount of money each month towards that goal.
 
 ### Targeted Users
@@ -38,5 +37,8 @@ As a user, I want to be able to:
 
 - **remove** an expense.
 
-
+Phase 2:
+As a user, I want to be able to:
+- **save** my list of expenses to file by selecting that option in the main directory
+- **load** my list of expenses from file if I want whenever I start the application.
 
