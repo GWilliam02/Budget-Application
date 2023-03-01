@@ -1,6 +1,6 @@
 package model;
 
-public abstract class Expense {
+public class Expense {
 
     protected Integer cost;
     protected String name;

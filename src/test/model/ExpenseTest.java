@@ -11,7 +11,7 @@ public class ExpenseTest {
 
     @BeforeEach
     public void setUp() {
-        e1 = new Food(999,
+        e1 = new Expense(999,
                 "Save On Foods",
                 "Groceries",
                 "Food",

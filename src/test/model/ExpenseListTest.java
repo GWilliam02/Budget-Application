@@ -16,14 +16,14 @@ public class ExpenseListTest {
     @BeforeEach
     private void setup() {
         expenseList = new ExpenseList();
-        e1 = new Food(100,
+        e1 = new Expense(100,
                 "safeway",
                 "Test comments",
                 "Food",
                 "February 17",
                 true);
 
-        e2 = new Food(500,
+        e2 = new Expense(500,
                 "costco",
                 "Test comments2",
                 "TV",

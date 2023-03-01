@@ -3,7 +3,8 @@ package model;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+//ExpenseList is a list of Expenses and current expenses
+//is the sum of all expenses in that list.
 public class ExpenseList {
     private Scanner scanner = new Scanner(System.in);
     private ArrayList<Expense> expenseList;

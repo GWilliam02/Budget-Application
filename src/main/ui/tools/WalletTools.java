@@ -4,6 +4,7 @@ import model.Wallet;
 
 import java.util.Scanner;
 
+//UI Tools for Wallet Class
 public class WalletTools {
 
     private final Scanner scanner;

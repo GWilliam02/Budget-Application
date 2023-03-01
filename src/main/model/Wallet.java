@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.Objects;
 
+//Wallet includes cash, bank balance, and a list of credit cards.
 public class Wallet {
 
     private int cash;

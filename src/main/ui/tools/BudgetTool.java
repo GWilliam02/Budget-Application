@@ -3,6 +3,7 @@ package ui.tools;
 
 import java.util.Scanner;
 
+//UI Tools for Budget
 public class BudgetTool {
 
     private final Scanner scanner;

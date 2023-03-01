@@ -1,5 +1,6 @@
 package model;
 
+//CreditCard class which includes details about a credit card
 public class CreditCard {
     private String name;
     private int balance;

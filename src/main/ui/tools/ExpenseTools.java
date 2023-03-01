@@ -2,6 +2,7 @@ package ui.tools;
 
 import model.Expense;
 
+//UI Tools for Expense
 public class ExpenseTools {
 
     public ExpenseTools() {}
