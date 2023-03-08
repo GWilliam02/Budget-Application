@@ -6,6 +6,8 @@ import java.util.Scanner;
 //UI Tools for Budget
 public class BudgetTool {
 
+    public static final String JSON_STORE = "./data/testBudget.json";
+
     private final Scanner scanner;
     private final ExpenseListTools expenseListTools;
     private final WalletTools walletTools;
