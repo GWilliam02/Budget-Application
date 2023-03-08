@@ -60,6 +60,32 @@ public class WalletTest {
     }
 
     @Test
+    public void testPayCreditCardBalance() {
+        wallet.setBankBalance(700);
+        assertTrue(wallet.payCreditCardBalance(cc2,700));
+        assertEquals(0, cc2.getBalance());
+        assertEquals(0, wallet.getBankBalance());
+
+        wallet.setBankBalance(700);
+        cc2.setBalance(700);
+        assertTrue(wallet.payCreditCardBalance(cc2,699));
+        assertEquals(1, cc2.getBalance());
+        assertEquals(1, wallet.getBankBalance());
+
+        wallet.setBankBalance(800);
+        cc2.setBalance(700);
+        assertFalse(wallet.payCreditCardBalance(cc2,701));
+        assertEquals(700, cc2.getBalance());
+        assertEquals(800, wallet.getBankBalance());
+
+        wallet.setBankBalance(700);
+        cc2.setBalance(800);
+        assertFalse(wallet.payCreditCardBalance(cc2, 701));
+        assertEquals(800, cc2.getBalance());
+        assertEquals(700, wallet.getBankBalance());
+    }
+
+    @Test
     public void testAddCreditCard() {
         assertEquals(2, wallet.getCards().size());
     }

@@ -74,8 +74,25 @@ public class Wallet {
         return result;
     }
 
+    // REQUIRES: cc is not null, amount > 0
+    // MODIFIES: this
+    // EFFECTS: pays off credit card with amount deducted from bank balance
+    public Boolean payCreditCardBalance(CreditCard cc, int amount) {
+        if (bankBalance >= amount && cc.payBill(amount)) {
+            cc.payBill(amount);
+            bankBalance -= amount;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public int getCash() {
         return cash;
+    }
+
+    public void setCash(int cash) {
+        this.cash = cash;
     }
 
     public ArrayList<CreditCard> getCards() {
@@ -88,9 +105,5 @@ public class Wallet {
 
     public void setBankBalance(int bankBalance) {
         this.bankBalance = bankBalance;
-    }
-
-    public void setCash(int cash) {
-        this.cash = cash;
     }
 }

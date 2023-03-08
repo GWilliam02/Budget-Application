@@ -95,6 +95,12 @@ public class ExpenseListTools {
     public void editExpenseUI() {
         int index = selectExpenseUI();
         Expense expense = expenseList.getExpenseAtIndex(index - 1);
+        Expense prevExpense = new Expense(expense.getCost(),
+                expense.getName(),
+                expense.getComments(),
+                expense.getPurchaseType(),
+                expense.getPurchaseDate(),
+                expense.getRecurring());
         int nextOperation;
         boolean save = false;
         while (!save) {
@@ -103,14 +109,18 @@ public class ExpenseListTools {
             expenseTools.printExpense(expense);
             System.out.println("What would you like to edit? (1-6)");
             System.out.println("Enter 7 to save changes");
+            System.out.println("Enter 8 to exit and cancel changes");
             nextOperation = scanner.nextInt();
             if (nextOperation == 7) {
+                expenseList.editExpense(expense, index - 1);
+                break;
+            } else if (nextOperation == 8) {
+                expenseList.editExpense(prevExpense, index - 1);
                 break;
             } else {
                 editExpenseLoop(expense, nextOperation);
             }
         }
-        expenseList.editExpense(expense, index - 1);
     }
 
     public void editExpenseLoop(Expense expense, int nextOperation) {

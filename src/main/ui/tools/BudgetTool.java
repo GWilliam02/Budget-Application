@@ -70,12 +70,41 @@ public class BudgetTool {
                     walletTools.depositCashUI();
                     break;
                 case 4:
-                    System.out.println("Work in Progress");
+                    creditCardDirectory();
+                    break;
                 case 5:
                     exitDirectory = true;
                     break;
             }
 
+        }
+    }
+
+    private void creditCardDirectory() {
+        int nextOperation;
+        boolean exitDirectory = false;
+
+        while (!exitDirectory) {
+            printCreditCardDirMessage();
+            nextOperation = scanner.nextInt();
+
+            switch (nextOperation) {
+                case 1:
+                    walletTools.addCreditCardUI();
+                    break;
+                case 2:
+                    walletTools.removeCreditCardUI();
+                    break;
+                case 3:
+                    walletTools.editCreditCardUI();
+                    break;
+                case 4:
+                    walletTools.payCreditCardUI();
+                    break;
+                case 5:
+                    exitDirectory = true;
+                    break;
+            }
         }
     }
 
@@ -113,18 +142,33 @@ public class BudgetTool {
         System.out.println("You have set your budget to: " + budget + " Cents");
     }
 
+    private void printCreditCardDirMessage() {
+        System.out.println("Welcome to the Credit Cards directory");
+        System.out.println("Summary of Credit Cards");
+        walletTools.printCreditCardsUI();
+        System.out.println();
+        System.out.println("Please select the following options below (By entering the corresponding number):");
+        System.out.println("1. Add Credit Card");
+        System.out.println("2. Delete Credit Card");
+        System.out.println("3. Edit Credit Card");
+        System.out.println("4. Pay Off Credit Card Balance");
+        System.out.println("5. Return to Wallet Directory");
+
+    }
+
     private void printWalletDirMessage() {
         System.out.println("Welcome to the Wallet directory");
         System.out.println("Summary of Wallet");
         System.out.println();
         System.out.println("Cash: " + walletTools.getCashBalance());
         System.out.println("Bank Balance " + walletTools.getBankBalance());
+        System.out.println("Credit Cards: " + walletTools.getCreditCards().size());
         System.out.println();
         System.out.println("Please select the following options below (By entering the corresponding number):");
         System.out.println("1. Change Bank Balance");
         System.out.println("2. Withdraw Cash");
         System.out.println("3. Deposit Cash");
-        System.out.println("4. Manage Credit Cards");
+        System.out.println("4. Manage Credit Card");
         System.out.println("5. Return to main directory");
     }
 
