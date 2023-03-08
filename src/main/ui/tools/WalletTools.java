@@ -125,8 +125,7 @@ public class WalletTools {
     public void editCreditCardUI() {
         int index = selectCreditCardUI();
         CreditCard creditCard = wallet.getCards().get(index - 1);
-        CreditCard prevCreditCard = new CreditCard(creditCard.getName(),
-                creditCard.getBalance(),
+        CreditCard prevCreditCard = new CreditCard(creditCard.getName(), creditCard.getBalance(),
                 creditCard.getLimit());
         int nextOperation;
         boolean save = false;
