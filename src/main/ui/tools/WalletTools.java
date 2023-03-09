@@ -16,7 +16,6 @@ public class WalletTools {
     public WalletTools(Budget budget) {
         scanner = new Scanner(System.in);
         wallet = budget.getWallet();
-//        budget.setWallet(wallet);
     }
 
     public void setUpWallet() {
@@ -107,13 +106,15 @@ public class WalletTools {
         System.out.println("Add a new credit card!");
 
         System.out.println("Name:");
-        name = scanner.next();
+        name = scanner.nextLine();
 
         System.out.println("Balance:");
         balance = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.println("Limit:");
         limit = scanner.nextInt();
+        scanner.nextLine();
 
         wallet.addCreditCard(new CreditCard(name, balance, limit));
         System.out.println("Successfully added a new credit card!");

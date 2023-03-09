@@ -12,7 +12,7 @@ import java.util.Scanner;
 //UI Tools for Budget
 public class BudgetTool {
 
-    public static final String JSON_STORE = "./data/testBudget.json";
+    public static final String JSON_STORE = "./data/testBudget1.json";
     private final Scanner scanner;
     private ExpenseListTools expenseListTools;
     private WalletTools walletTools;
@@ -48,26 +48,31 @@ public class BudgetTool {
             printMainDirMessage();
             nextOperation = scanner.nextInt();
 
-            switch (nextOperation) {
-                case 1:
-                    setUpBudget();
-                    break;
-                case 2:
-                    expenseDirectory();
-                    break;
-                case 3:
-                    walletDirectory();
-                    break;
-                case 4:
-                    loadBudget();
-                    break;
-                case 5:
-                    saveBudget();
-                    break;
-                case 6:
-                    exitDirectory = true;
-                    break;
+            if (nextOperation == 6) {
+                exitDirectory = true;
+            } else {
+                mainDirectoryAction(nextOperation);
             }
+        }
+    }
+
+    private void mainDirectoryAction(int nextOperation) {
+        switch (nextOperation) {
+            case 1:
+                setUpBudget();
+                break;
+            case 2:
+                expenseDirectory();
+                break;
+            case 3:
+                walletDirectory();
+                break;
+            case 4:
+                loadBudget();
+                break;
+            case 5:
+                saveBudget();
+                break;
         }
     }
 
@@ -214,8 +219,8 @@ public class BudgetTool {
         System.out.println("Current Budget: " + budgetApp.getMonthlyBudget());
         //may add feature to automatically specify which month
         System.out.println("Total Expenses for this month: " + expenseListTools.getCurrentExpenses());
-        System.out.println("Remaining Balance in Budget: " +
-                (budgetApp.getMonthlyBudget() - expenseListTools.getCurrentExpenses()));
+        System.out.println("Remaining Balance in Budget: "
+                + (budgetApp.getMonthlyBudget() - expenseListTools.getCurrentExpenses()));
 
         System.out.println();
         System.out.println("Please select the following options below (By entering the corresponding number):");
@@ -232,7 +237,7 @@ public class BudgetTool {
     //EFFECTS: loads Budget from file
     private void loadBudget() {
         try {
-            budgetApp =jsonReader.readBudget();
+            budgetApp = jsonReader.readBudget();
             expenseListTools = new ExpenseListTools(budgetApp);
             walletTools = new WalletTools(budgetApp);
             System.out.println("Loaded BudgetApp from: " + JSON_STORE);

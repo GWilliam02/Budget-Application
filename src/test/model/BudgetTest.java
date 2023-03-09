@@ -25,8 +25,8 @@ class BudgetTest {
 
     @Test
     void toJson() {
-        assertEquals(budgetApp.toJson().toString(), "{\"expensesList\":{\"currentExpenses\":0," +
-                "\"expensesList\":[]},\"wallet\":{\"cards\":[],\"bankBalance\":0,\"cash\":0},\"monthlyBudget\":1000}");
+        assertEquals(budgetApp.toJson().toString(), "{\"wallet\":{\"cards\":[],\"bankBalance\":0,\"cash\":0},"
+                + "\"monthlyBudget\":1000,\"expenseList\":{\"currentExpenses\":0,\"expensesList\":[]}}");
     }
 
     @Test

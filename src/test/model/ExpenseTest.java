@@ -31,12 +31,12 @@ public class ExpenseTest {
 
     @Test
     public void testToJson() {
-        assertEquals(e1.toJson().toString(), "{\"purchaseDate\":\"January 5\"," +
-                "\"cost\":999," +
-                "\"comments\":\"Groceries\"," +
-                "\"recurring\":false," +
-                "\"name\":\"Save On Foods\"," +
-                "\"purchaseType\":\"Food\"}");
+        assertEquals(e1.toJson().toString(), "{\"purchaseDate\":\"January 5\","
+                + "\"cost\":999,"
+                + "\"comments\":\"Groceries\","
+                + "\"recurring\":false,"
+                + "\"name\":\"Save On Foods\","
+                + "\"purchaseType\":\"Food\"}");
     }
 
     @Test

@@ -42,3 +42,5 @@ As a user, I want to be able to:
 - **save** my list of expenses to file by selecting that option in the main directory
 - **load** my list of expenses from file if I want whenever I start the application.
 
+References:
+- JsonSerializationDemo

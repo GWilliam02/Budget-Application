@@ -21,7 +21,7 @@ public class Budget {
         JSONObject json = new JSONObject();
         json.put("monthlyBudget", monthlyBudget);
         json.put("wallet", walletToJson());
-        json.put("expensesList", expenseListToJson());
+        json.put("expenseList", expenseListToJson());
         return json;
     }
 

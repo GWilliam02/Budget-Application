@@ -28,22 +28,6 @@ public class JsonReader {
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseBudget(jsonObject);
     }
-//
-//    //EFFECTS: reads and return expense list from file
-//    //throws IO exception for reading errors
-//    public ExpenseList readExpenseList() throws IOException {
-//        String jsonData = readFile(source);
-//        JSONObject jsonObject = new JSONObject(jsonData);
-//        return parseExpenseList(jsonObject);
-//    }
-//
-//    //EFFECTS: reads and returns wallet form file
-//    //throws IO exception for reading errors
-//    public Wallet readWallet() throws IOException {
-//        String jsonData = readFile(source);
-//        JSONObject jsonObject = new JSONObject(jsonData);
-//        return parseWallet(jsonObject);
-//    }
 
     //EFFECTS: reads and return file as string.
     private String readFile(String source) throws IOException {
@@ -77,11 +61,6 @@ public class JsonReader {
         for (Object json : expenseArray) {
             JSONObject nextExpense = (JSONObject) json;
             addExpense(expenseList, nextExpense);
-        }
-
-        if (currentExpense != expenseList.getCurrentExpenses()) {
-            System.out.println("Error while parsing expense list data. ");
-            expenseList.setCurrentExpenses(currentExpense);
         }
 
         return expenseList;
