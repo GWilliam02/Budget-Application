@@ -6,6 +6,7 @@ import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 //UI Tools for Budget
@@ -13,9 +14,9 @@ public class BudgetTool {
 
     public static final String JSON_STORE = "./data/testBudget.json";
     private final Scanner scanner;
-    private final ExpenseListTools expenseListTools;
-    private final WalletTools walletTools;
-    private final Budget budgetApp;
+    private ExpenseListTools expenseListTools;
+    private WalletTools walletTools;
+    private Budget budgetApp;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
@@ -227,9 +228,20 @@ public class BudgetTool {
         System.out.println();
     }
 
+    //MODIFIES: this
+    //EFFECTS: loads Budget from file
     private void loadBudget() {
+        try {
+            budgetApp =jsonReader.readBudget();
+            expenseListTools = new ExpenseListTools(budgetApp);
+            walletTools = new WalletTools(budgetApp);
+            System.out.println("Loaded BudgetApp from: " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read data from file: " + JSON_STORE);
+        }
     }
 
+    //EFFECTS: save the current Budget to file
     private void saveBudget() {
         try {
             jsonWriter.open();

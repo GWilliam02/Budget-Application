@@ -38,7 +38,7 @@ public class Budget {
     private JSONObject expenseListToJson() {
         JSONObject json = new JSONObject();
         json.put("currentExpenses", expenseList.getCurrentExpenses());
-        json.put("expenseList", expensesListToJson());
+        json.put("expensesList", expensesListToJson());
         return json;
     }
 

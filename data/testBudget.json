@@ -18,7 +18,7 @@
     "monthlyBudget": 100000,
     "expenseList": {
         "currentExpenses": 90,
-        "expenseList": [
+        "expensesList": [
             {
                 "purchaseDate": "test3",
                 "cost": 40,

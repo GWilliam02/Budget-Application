@@ -1,10 +1,7 @@
 package persistence;
 
 
-import model.CreditCard;
-import model.Expense;
-import model.ExpenseList;
-import model.Wallet;
+import model.*;
 import org.json.*;
 
 import java.io.IOException;
@@ -24,21 +21,29 @@ public class JsonReader {
         this.source = source;
     }
 
-    //EFFECTS: reads and return expense list from file
+    //EFFECTS: reads and return Budget from file
     //throws IO exception for reading errors
-    public ExpenseList readExpenseList() throws IOException {
+    public Budget readBudget() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
-        return parseExpenseList(jsonObject);
+        return parseBudget(jsonObject);
     }
-
-    //EFFECTS: reads and returns wallet form file
-    //throws IO exception for reading errors
-    public Wallet readWallet() throws IOException {
-        String jsonData = readFile(source);
-        JSONObject jsonObject = new JSONObject(jsonData);
-        return parseWallet(jsonObject);
-    }
+//
+//    //EFFECTS: reads and return expense list from file
+//    //throws IO exception for reading errors
+//    public ExpenseList readExpenseList() throws IOException {
+//        String jsonData = readFile(source);
+//        JSONObject jsonObject = new JSONObject(jsonData);
+//        return parseExpenseList(jsonObject);
+//    }
+//
+//    //EFFECTS: reads and returns wallet form file
+//    //throws IO exception for reading errors
+//    public Wallet readWallet() throws IOException {
+//        String jsonData = readFile(source);
+//        JSONObject jsonObject = new JSONObject(jsonData);
+//        return parseWallet(jsonObject);
+//    }
 
     //EFFECTS: reads and return file as string.
     private String readFile(String source) throws IOException {
@@ -50,12 +55,23 @@ public class JsonReader {
         return stringBuilder.toString();
     }
 
+    //EFFECTS: parses Budget from JSON object and returns it.
+    private Budget parseBudget(JSONObject jsonObject) {
+        Budget budget = new Budget();
+        int monthlyBudget = jsonObject.getInt("monthlyBudget");
+        budget.setExpenseList(parseExpenseList(jsonObject));
+        budget.setWallet(parseWallet(jsonObject));
+        budget.setMonthlyBudget(monthlyBudget);
+
+        return budget;
+    }
+
     //EFFECTS: parses expense list from JSON object and returns it.
     private ExpenseList parseExpenseList(JSONObject jsonObject) {
         ExpenseList expenseList = new ExpenseList();
         JSONObject expenseListJson = jsonObject.getJSONObject("expenseList");
 
-        int currentExpense = expenseListJson.getInt("currentExpense");
+        int currentExpense = expenseListJson.getInt("currentExpenses");
         JSONArray expenseArray = expenseListJson.getJSONArray("expensesList");
 
         for (Object json : expenseArray) {

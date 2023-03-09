@@ -15,8 +15,8 @@ public class WalletTools {
 
     public WalletTools(Budget budget) {
         scanner = new Scanner(System.in);
-        wallet = new Wallet();
-        budget.setWallet(wallet);
+        wallet = budget.getWallet();
+//        budget.setWallet(wallet);
     }
 
     public void setUpWallet() {

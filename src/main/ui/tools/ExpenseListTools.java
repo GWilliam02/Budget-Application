@@ -18,8 +18,8 @@ public class ExpenseListTools {
     public ExpenseListTools(Budget budget) {
         scanner = new Scanner(System.in);
         expenseTools = new ExpenseTools();
-        expenseList = new ExpenseList();
-        budget.setExpenseList(expenseList);
+        expenseList = budget.getExpenseList();
+//        budget.setExpenseList(expenseList);
     }
 
     public int getCurrentExpenses() {
@@ -48,7 +48,7 @@ public class ExpenseListTools {
                                 + " Name: " + expense.getName()
                                 + ", Cost: " + expense.getCost()
                                 + ", Purchase Type: " + expense.getPurchaseType()
-                                + ", Purchase Date: " + expense.getRecurring()
+                                + ", Purchase Date: " + expense.getPurchaseDate()
                                 + ", Recurring: " + expense.getRecurring());
                 index++;
             }
