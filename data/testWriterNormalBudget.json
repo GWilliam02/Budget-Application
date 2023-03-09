@@ -1,0 +1,40 @@
+{
+    "wallet": {
+        "cards": [
+            {
+                "balance": 200,
+                "name": "RBC Visa",
+                "limit": 5000
+            },
+            {
+                "balance": 2200,
+                "name": "TD Mastercard",
+                "limit": 7500
+            }
+        ],
+        "bankBalance": 90000,
+        "cash": 2500
+    },
+    "monthlyBudget": 25000,
+    "expenseList": {
+        "currentExpenses": 6000,
+        "expensesList": [
+            {
+                "purchaseDate": "January 5",
+                "cost": 1000,
+                "comments": "Groceries",
+                "recurring": false,
+                "name": "Save On Foods",
+                "purchaseType": "Food"
+            },
+            {
+                "purchaseDate": "January 19",
+                "cost": 5000,
+                "comments": "Books",
+                "recurring": true,
+                "name": "UBC",
+                "purchaseType": "Education"
+            }
+        ]
+    }
+}

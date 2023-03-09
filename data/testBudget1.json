@@ -1,0 +1,40 @@
+{
+    "wallet": {
+        "cards": [
+            {
+                "balance": 500,
+                "name": "RBC Advantage Visa",
+                "limit": 10000
+            },
+            {
+                "balance": 650,
+                "name": "AMEX Platinum",
+                "limit": 50000
+            }
+        ],
+        "bankBalance": 50000,
+        "cash": 2000
+    },
+    "monthlyBudget": 100000,
+    "expenseList": {
+        "currentExpenses": 7100,
+        "expensesList": [
+            {
+                "purchaseDate": "December 25",
+                "cost": 100,
+                "comments": "vegetables",
+                "recurring": true,
+                "name": "save-on-foods",
+                "purchaseType": "food"
+            },
+            {
+                "purchaseDate": "jun 27 2021",
+                "cost": 7000,
+                "comments": "new computer",
+                "recurring": false,
+                "name": "bestbuy",
+                "purchaseType": "shopping"
+            }
+        ]
+    }
+}

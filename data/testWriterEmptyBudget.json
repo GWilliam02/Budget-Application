@@ -1,0 +1,12 @@
+{
+    "wallet": {
+        "cards": [],
+        "bankBalance": 0,
+        "cash": 0
+    },
+    "monthlyBudget": 0,
+    "expenseList": {
+        "currentExpenses": 0,
+        "expensesList": []
+    }
+}
