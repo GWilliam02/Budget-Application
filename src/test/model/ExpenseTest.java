@@ -30,6 +30,16 @@ public class ExpenseTest {
     }
 
     @Test
+    public void testToJson() {
+        assertEquals(e1.toJson().toString(), "{\"purchaseDate\":\"January 5\"," +
+                "\"cost\":999," +
+                "\"comments\":\"Groceries\"," +
+                "\"recurring\":false," +
+                "\"name\":\"Save On Foods\"," +
+                "\"purchaseType\":\"Food\"}");
+    }
+
+    @Test
     public void testSetCost() {
         e1.setCost(100);
         assertEquals(100, e1.getCost());

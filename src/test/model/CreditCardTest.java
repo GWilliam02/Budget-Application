@@ -47,6 +47,11 @@ public class CreditCardTest {
     }
 
     @Test
+    public void testToJson() {
+        assertEquals(cc1.toJson().toString(), "{\"balance\":200,\"name\":\"RBC Visa\",\"limit\":5000}");
+    }
+
+    @Test
     public void testSetBalance() {
         cc1.setBalance(1000);
         assertEquals(1000, cc1.getBalance());
