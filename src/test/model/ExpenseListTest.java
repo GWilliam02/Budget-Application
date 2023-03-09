@@ -64,7 +64,7 @@ public class ExpenseListTest {
 
     @Test
     public void testGetExpenseList() {
-        ArrayList<Expense> expList = expenseList.getExpenseList();
+        ArrayList<Expense> expList = expenseList.getExpensesList();
         assertEquals(2, expList.size());
     }
 

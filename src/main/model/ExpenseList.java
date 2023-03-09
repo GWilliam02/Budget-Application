@@ -7,7 +7,7 @@ import java.util.Scanner;
 //is the sum of all expenses in that list.
 public class ExpenseList {
     private Scanner scanner = new Scanner(System.in);
-    private ArrayList<Expense> expenseList;
+    private ArrayList<Expense> expensesList;
     private int currentExpenses;
 
 
@@ -16,7 +16,7 @@ public class ExpenseList {
     //EFFECTS: currentExpenses is set to 0,
     //          initializes empty expense list.
     public ExpenseList() {
-        expenseList = new ArrayList<>();
+        expensesList = new ArrayList<>();
         currentExpenses = 0;
     }
 
@@ -25,7 +25,7 @@ public class ExpenseList {
     // EFFECTS: adds expense to expense list,
     //          increases current expense by expense cost
     public void addExpense(Expense expense) {
-        expenseList.add(expense);
+        expensesList.add(expense);
         currentExpenses += expense.getCost();
     }
 
@@ -34,7 +34,7 @@ public class ExpenseList {
     // EFFECTS: removes expense from expense list
     //          decreases current expense by expense cost.
     public void removeExpense(Expense expense) {
-        expenseList.remove(expense);
+        expensesList.remove(expense);
         currentExpenses -= expense.getCost();
     }
 
@@ -43,14 +43,14 @@ public class ExpenseList {
     // EFFECTS: Replaces expense at the given index with new expense
     //          recalculates current expenses
     public void editExpense(Expense expense, int index) {
-        expenseList.set(index, expense);
+        expensesList.set(index, expense);
         currentExpenses = calculateExpenses();
     }
 
     // EFFECTS: returns the current expense in cents
     public int calculateExpenses() {
         int result = 0;
-        for (Expense expense : expenseList) {
+        for (Expense expense : expensesList) {
             result += expense.getCost();
         }
         return result;
@@ -59,7 +59,7 @@ public class ExpenseList {
     // REQUIRES: index >= 0
     // EFFECTS: returns the expense object at given index
     public Expense getExpenseAtIndex(int index) {
-        return expenseList.get(index);
+        return expensesList.get(index);
     }
 
     // Getters and Setters
@@ -73,11 +73,11 @@ public class ExpenseList {
     }
 
     public int getExpenseCount() {
-        return expenseList.size();
+        return expensesList.size();
     }
 
-    public ArrayList<Expense> getExpenseList() {
-        return expenseList;
+    public ArrayList<Expense> getExpensesList() {
+        return expensesList;
     }
 
 //

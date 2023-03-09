@@ -37,7 +37,7 @@ public class ExpenseListTools {
     }
 
     public void printExpensesUI() {
-        ArrayList<Expense> expenses = expenseList.getExpenseList();
+        ArrayList<Expense> expenses = expenseList.getExpensesList();
         int index = 1;
         if (expenses.size() == 0) {
             System.out.println("No expenses");

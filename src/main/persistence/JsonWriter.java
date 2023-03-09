@@ -28,16 +28,20 @@ public class JsonWriter {
 
     //MODIFIES: this
     //EFFECTS: writes JSON version of budgeting app to file
-    public void write(Budget budget){
+    public void write(Budget budget) {
         JSONObject json = budget.toJson();
         saveToFile(json.toString(TAB));
     }
 
     //MODIFIES: this
     //EFFECTS: closes writer
-    public void close() {writer.close();}
+    public void close() {
+        writer.close();
+    }
 
     //MODIFIES: this
     //EFFECTS: writes passed in string to file
-    public void saveToFile(String json) {writer.print(json);}
+    public void saveToFile(String json) {
+        writer.print(json);
+    }
 }

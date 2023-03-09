@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 public class Expense {
 
     protected Integer cost;
@@ -23,6 +25,18 @@ public class Expense {
         this.purchaseType = purchaseType;
         this.purchaseDate = purchaseDate;
         this.recurring = recurring;
+    }
+
+    //EFFECTS: Converts expense object to JSON
+    public JSONObject toJson() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("cost", cost);
+        jsonObject.put("name", name);
+        jsonObject.put("comments", comments);
+        jsonObject.put("purchaseType", purchaseType);
+        jsonObject.put("purchaseDate", purchaseDate);
+        jsonObject.put("recurring", recurring);
+        return jsonObject;
     }
 
 

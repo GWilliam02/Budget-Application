@@ -1,5 +1,7 @@
 package model;
 
+import org.json.JSONObject;
+
 //CreditCard class which includes details about a credit card
 public class CreditCard {
     private String name;
@@ -38,6 +40,15 @@ public class CreditCard {
         } else {
             return false;
         }
+    }
+
+    //EFFECTS: converts credit card object to JSON
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("balance", balance);
+        json.put("limit", limit);
+        return json;
     }
 
     public String getName() {

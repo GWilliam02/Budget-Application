@@ -1,0 +1,40 @@
+{
+    "wallet": {
+        "cards": [
+            {
+                "balance": 400,
+                "name": "Amex",
+                "limit": 100000
+            },
+            {
+                "balance": 250,
+                "name": "Visa",
+                "limit": 8000
+            }
+        ],
+        "bankBalance": 500,
+        "cash": 400
+    },
+    "monthlyBudget": 100000,
+    "expenseList": {
+        "currentExpenses": 90,
+        "expenseList": [
+            {
+                "purchaseDate": "test3",
+                "cost": 40,
+                "comments": "test1",
+                "recurring": true,
+                "name": "Oreos",
+                "purchaseType": "test2"
+            },
+            {
+                "purchaseDate": "test3",
+                "cost": 50,
+                "comments": "test1",
+                "recurring": true,
+                "name": "Cheese",
+                "purchaseType": "test2"
+            }
+        ]
+    }
+}

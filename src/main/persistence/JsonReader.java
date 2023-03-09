@@ -56,7 +56,7 @@ public class JsonReader {
         JSONObject expenseListJson = jsonObject.getJSONObject("expenseList");
 
         int currentExpense = expenseListJson.getInt("currentExpense");
-        JSONArray expenseArray = expenseListJson.getJSONArray("expenseList");
+        JSONArray expenseArray = expenseListJson.getJSONArray("expensesList");
 
         for (Object json : expenseArray) {
             JSONObject nextExpense = (JSONObject) json;

@@ -2,27 +2,34 @@ package ui.tools;
 
 
 import model.Budget;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 //UI Tools for Budget
 public class BudgetTool {
 
     public static final String JSON_STORE = "./data/testBudget.json";
-
     private final Scanner scanner;
     private final ExpenseListTools expenseListTools;
     private final WalletTools walletTools;
     private final Budget budgetApp;
-    private int budget;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
 
     //Initialization of Budget and empty ExpenseList
-    public BudgetTool() {
+    public BudgetTool() throws FileNotFoundException {
         scanner = new Scanner(System.in);
         budgetApp = new Budget();
         expenseListTools = new ExpenseListTools(budgetApp);
         walletTools = new WalletTools(budgetApp);
+
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+
         initializeApp();
     }
 
@@ -51,6 +58,12 @@ public class BudgetTool {
                     walletDirectory();
                     break;
                 case 4:
+                    loadBudget();
+                    break;
+                case 5:
+                    saveBudget();
+                    break;
+                case 6:
                     exitDirectory = true;
                     break;
             }
@@ -144,8 +157,8 @@ public class BudgetTool {
 
     private void setUpBudget() {
         System.out.println("Please enter your budget for this month (In Cents)");
-        budget = scanner.nextInt();
-        System.out.println("You have set your budget to: " + budget + " Cents");
+        budgetApp.setMonthlyBudget(scanner.nextInt());
+        System.out.println("You have set your budget to: " + budgetApp.getMonthlyBudget() + " Cents");
     }
 
     private void printCreditCardDirMessage() {
@@ -197,18 +210,36 @@ public class BudgetTool {
         System.out.println("Welcome to the main directory");
         System.out.println("Summary of Budget");
         System.out.println();
-        System.out.println("Current Budget: " + budget);
+        System.out.println("Current Budget: " + budgetApp.getMonthlyBudget());
         //may add feature to automatically specify which month
         System.out.println("Total Expenses for this month: " + expenseListTools.getCurrentExpenses());
-        System.out.println("Remaining Balance in Budget: " + (budget - expenseListTools.getCurrentExpenses()));
+        System.out.println("Remaining Balance in Budget: " +
+                (budgetApp.getMonthlyBudget() - expenseListTools.getCurrentExpenses()));
 
         System.out.println();
         System.out.println("Please select the following options below (By entering the corresponding number):");
         System.out.println("1. Change Budget");
         System.out.println("2. Manage Expenses");
         System.out.println("3. Open Wallet");
-        System.out.println("4. Quit app");
+        System.out.println("4. Load budget");
+        System.out.println("5. Save budget");
+        System.out.println("6. Quit app");
         System.out.println();
+    }
+
+    private void loadBudget() {
+    }
+
+    private void saveBudget() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(budgetApp);
+            jsonWriter.close();
+            System.out.println("Saved Budget Progress to" + JSON_STORE);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to save to file: " + JSON_STORE);
+        }
     }
 
 }
