@@ -1,6 +1,8 @@
 package ui.tools;
 
 
+import model.Budget;
+
 import java.util.Scanner;
 
 //UI Tools for Budget
@@ -11,14 +13,16 @@ public class BudgetTool {
     private final Scanner scanner;
     private final ExpenseListTools expenseListTools;
     private final WalletTools walletTools;
+    private final Budget budgetApp;
     private int budget;
 
 
     //Initialization of Budget and empty ExpenseList
     public BudgetTool() {
         scanner = new Scanner(System.in);
-        expenseListTools = new ExpenseListTools();
-        walletTools = new WalletTools();
+        budgetApp = new Budget();
+        expenseListTools = new ExpenseListTools(budgetApp);
+        walletTools = new WalletTools(budgetApp);
         initializeApp();
     }
 

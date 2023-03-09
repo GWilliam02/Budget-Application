@@ -1,5 +1,6 @@
 package ui.tools;
 
+import model.Budget;
 import model.CreditCard;
 import model.Wallet;
 
@@ -12,9 +13,10 @@ public class WalletTools {
     private final Scanner scanner;
     private final Wallet wallet;
 
-    public WalletTools() {
+    public WalletTools(Budget budget) {
         scanner = new Scanner(System.in);
         wallet = new Wallet();
+        budget.setWallet(wallet);
     }
 
     public void setUpWallet() {

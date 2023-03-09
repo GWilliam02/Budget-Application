@@ -1,5 +1,6 @@
 package ui.tools;
 
+import model.Budget;
 import model.Expense;
 import model.ExpenseList;
 
@@ -14,10 +15,11 @@ public class ExpenseListTools {
     private ExpenseList expenseList;
 
 
-    public ExpenseListTools() {
+    public ExpenseListTools(Budget budget) {
         scanner = new Scanner(System.in);
         expenseTools = new ExpenseTools();
         expenseList = new ExpenseList();
+        budget.setExpenseList(expenseList);
     }
 
     public int getCurrentExpenses() {
