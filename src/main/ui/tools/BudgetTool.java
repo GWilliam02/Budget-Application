@@ -35,8 +35,21 @@ public class BudgetTool {
     }
 
     private void initializeApp() {
-        setUpBudget();
-        walletTools.setUpWallet();
+        int nextOperation;
+        while (true) {
+            printSetup();
+            nextOperation = scanner.nextInt();
+            if (nextOperation == 1) {
+                setUpBudget();
+                walletTools.setUpWallet();
+                break;
+            } else if (nextOperation == 2) {
+                loadBudget();
+                break;
+            } else {
+                System.out.println("Invalid input, try again");
+            }
+        }
         mainDirectory();
     }
 
@@ -159,6 +172,13 @@ public class BudgetTool {
                     break;
             }
         }
+    }
+
+    private void printSetup() {
+        System.out.println("Welcome to the budgeting app!");
+        System.out.println("Please select the following options below");
+        System.out.println("1. Create a new Budget plan");
+        System.out.println("2. Load existing Budget plan");
     }
 
     private void setUpBudget() {
