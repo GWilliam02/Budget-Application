@@ -14,7 +14,7 @@ public class Main {
 //            System.out.println("Application cannot be started: no file found");
 //        }
 
-        new BudgetManager();
+        new BudgetingApp();
     }
 
 }
