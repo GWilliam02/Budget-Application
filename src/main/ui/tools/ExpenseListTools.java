@@ -30,6 +30,7 @@ public class ExpenseListTools {
         return expenseList.getExpenseCount();
     }
 
+
     public int selectExpenseUI() {
         printExpensesUI();
         System.out.println("Please select an expense");

@@ -2,6 +2,9 @@ package ui.tools;
 
 import model.Expense;
 
+import javax.swing.*;
+import java.awt.*;
+
 //UI Tools for Expense
 public class ExpenseTools {
 

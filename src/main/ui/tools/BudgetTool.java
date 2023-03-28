@@ -255,7 +255,7 @@ public class BudgetTool {
 
     //MODIFIES: this
     //EFFECTS: loads Budget from file
-    private void loadBudget() {
+    public void loadBudget() {
         try {
             budgetApp = jsonReader.readBudget();
             expenseListTools = new ExpenseListTools(budgetApp);

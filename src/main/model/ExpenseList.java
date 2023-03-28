@@ -1,12 +1,11 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 //ExpenseList is a list of Expenses and current expenses
 //is the sum of all expenses in that list.
 public class ExpenseList {
-    private Scanner scanner = new Scanner(System.in);
+
     private ArrayList<Expense> expensesList;
     private int currentExpenses;
 
@@ -18,6 +17,11 @@ public class ExpenseList {
     public ExpenseList() {
         expensesList = new ArrayList<>();
         currentExpenses = 0;
+    }
+
+    public ExpenseList(Budget budget) {
+        this.expensesList = budget.getExpenseList().getExpensesList();
+        this.currentExpenses = budget.getExpenseList().getCurrentExpenses();
     }
 
     // REQUIRES: expense is not null
@@ -80,20 +84,5 @@ public class ExpenseList {
         return expensesList;
     }
 
-//
-//    public ArrayList<Expense> sortByDecreasingPrice() {
-//        return expenseList; /*Stub*/
-//    }
-//
-//    public ArrayList<Expense> sortByAscendingPrice() {
-//        return expenseList; /*Stub*/
-//    }
-//
-//    public ArrayList<Expense> sortByPurchaseType() {
-//        return expenseList; /*Stub*/
-//    }
-//
-//    public ArrayList<Expense> sortByLatestPurchase() {
-//        return expenseList; /*Stub*/
-//    }
+
 }

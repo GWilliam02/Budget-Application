@@ -8,13 +8,14 @@ import java.io.FileNotFoundException;
 public class Main {
 
     public static void main(String[] args) {
-//        try {
+        try {
 //            new BudgetTool();
-//        } catch (FileNotFoundException e) {
-//            System.out.println("Application cannot be started: no file found");
-//        }
+//            new BudgetingApp();
+            new App();
+        } catch (FileNotFoundException e) {
+            System.out.println("Application cannot be started: no file found");
+        }
 
-        new BudgetingApp();
     }
 
 }
