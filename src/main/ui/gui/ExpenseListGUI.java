@@ -125,90 +125,16 @@ public class ExpenseListGUI extends JPanel {
                 reRender();
 
             } else if (command.contains("edit")) {
-                System.out.println("edit expense");
                 index = Integer.parseInt(command.substring(4));
-                new ExpenseOptionPane(expenseList.getExpenseAtIndex(index - 1));
+                new ExpenseOptionPane(expenseList.getExpenseAtIndex(index - 1), index - 1, expenseList);
+                reRender();
 
             } else if (command.equals("addExpense")) {
-                System.out.println("add expense");
-                new ExpenseOptionPane();
+                new ExpenseOptionPane(expenseList);
                 reRender();
             }
         }
 
-        private void removeExpense(int index) {
-            expenseList.removeExpenseAtIndex(index - 1);
-            expenseListPanel.remove(index - 1);
-            reRender();
-
-
-        }
-
     }
 
-    private class ExpenseOptionPane extends JPanel {
-
-        private JTextField nameField;
-        private JTextField costField;
-        private JTextField commentsField;
-        private JTextField typeField;
-        private JTextField dateField;
-        private JTextField recurringField;
-
-        private String panelName;
-
-        public ExpenseOptionPane(Expense expense) {
-            nameField = new JTextField(expense.getName(), 25);
-            costField = new JTextField(expense.getCost().toString(), 25);
-            commentsField = new JTextField(expense.getComments(), 50);
-            typeField = new JTextField(expense.getPurchaseType(), 25);
-            dateField = new JTextField(expense.getPurchaseDate(), 25);
-            recurringField = new JTextField(expense.getRecurring().toString(), 5);
-
-            panelName = "Edit Expense";
-
-            buildOptionPane();
-        }
-
-        public ExpenseOptionPane() {
-            nameField = new JTextField(25);
-            costField = new JTextField(25);
-            commentsField = new JTextField(50);
-            typeField = new JTextField(25);
-            dateField = new JTextField(25);
-            recurringField = new JTextField(5);
-
-            panelName = "Create Expense";
-
-            buildOptionPane();
-        }
-
-        public void buildOptionPane() {
-            setLayout(new GridLayout(0, 1));
-            add(new JLabel("Name"));
-            add(nameField);
-            add(new JLabel("Cost (Cents)"));
-            add(costField);
-            add(new JLabel("Comments"));
-            add(commentsField);
-            add(new JLabel("Purchase Type"));
-            add(typeField);
-            add(new JLabel("Purchase Date"));
-            add(dateField);
-            add(new JLabel("Recurring?"));
-            add(recurringField);
-
-            int result = JOptionPane.showConfirmDialog(null, this, panelName, JOptionPane.OK_CANCEL_OPTION);
-            if (result == JOptionPane.OK_OPTION) {
-                Expense newExpense = new Expense(Integer.parseInt(costField.getText()),
-                        nameField.getText(),
-                        commentsField.getText(),
-                        typeField.getText(),
-                        dateField.getText(), true);
-                expenseList.addExpense(newExpense);
-            }
-            System.out.println(panelName);
-        }
-
-    }
 }
