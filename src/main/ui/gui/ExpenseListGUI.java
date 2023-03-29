@@ -6,12 +6,19 @@ import ui.App;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class ExpenseListGUI extends JPanel {
     private App app;
     private JPanel summaryPanel;
     private JPanel expenseListPanel;
     private ExpenseList expenseList;
+
+    private ArrayList<JButton> editButtons = new ArrayList<>();
+    private ArrayList<JButton> deleteButtons = new ArrayList<>();
 
     public ExpenseListGUI(App application, ExpenseList expenseList) {
         app = application;
@@ -50,7 +57,6 @@ public class ExpenseListGUI extends JPanel {
             }
         }
 
-
         add(expenseListPanel);
     }
 
@@ -60,16 +66,67 @@ public class ExpenseListGUI extends JPanel {
         c.insets = new Insets(4, 4, 4, 4);
         c.gridx = 0;
         c.gridy = 0;
-        c.weightx = 0;
-        c.weighty = 0;
+//        c.weightx = 0;
+//        c.weighty = 0;
         c.fill = GridBagConstraints.HORIZONTAL;
         expenseEntry.add(new ExpenseGUI(expense, index), c);
+
         c.gridx++;
-        expenseEntry.add(new JButton("Delete"));
+        JButton deleteButton = new JButton("Delete");
+        deleteButton.setActionCommand("delete" + index);
+        deleteButtons.add(deleteButton);
+        deleteButton.addActionListener(new ExpenseOptionHandler());
+        expenseEntry.add(deleteButton);
+
         c.gridx++;
-        expenseEntry.add(new JButton("Edit"));
+        JButton editButton = new JButton("Edit");
+        editButton.setActionCommand("edit" + index);
+        editButtons.add(editButton);
+        editButton.addActionListener(new ExpenseOptionHandler());
+        expenseEntry.add(editButton);
+
+        expenseEntry.setName("expense" + index);
+
         expenseEntry.setBorder(BorderFactory.createLineBorder(Color.black));
 
         return expenseEntry;
+    }
+
+    private void reRender() {
+        remove(summaryPanel);
+        remove(expenseListPanel);
+        addSummary();
+        addExpenseList();
+        validate();
+        repaint();
+    }
+
+    private class ExpenseOptionHandler implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String command = e.getActionCommand();
+            int index = -1;
+            if (command.contains("delete")) {
+                index = Integer.parseInt(command.substring(6));
+
+                expenseList.removeExpenseAtIndex(index - 1);
+                expenseListPanel.remove(index - 1);
+                reRender();
+
+            } else if (command.contains("edit")) {
+                System.out.println("edit expense");
+                System.out.println(e.getActionCommand().substring(4));
+            }
+        }
+
+        private void removeExpense(int index) {
+            expenseList.removeExpenseAtIndex(index - 1);
+            expenseListPanel.remove(index - 1);
+            reRender();
+
+
+        }
+
     }
 }

@@ -42,6 +42,11 @@ public class ExpenseList {
         currentExpenses -= expense.getCost();
     }
 
+    public void removeExpenseAtIndex(int index) {
+        currentExpenses -= expensesList.get(index).getCost();
+        expensesList.remove(index);
+    }
+
     // REQUIRES: expense is not null, index >= 0
     // MODIFIES: this
     // EFFECTS: Replaces expense at the given index with new expense
