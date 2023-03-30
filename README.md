@@ -43,7 +43,21 @@ As a user, I want to be able to:
 - **load** my list of expenses from file if I want whenever I start the application.
 
 Phase 3:
-- 
+As a user, I want to be able to:
+- **add** multiple expenses to a list of expenses
+- **save** or **load** the state of an application
+
+## Instructions for Grader
+- You can generate the first required action related to adding Xs to a Y by navigating to Expenses,
+and clicking "Add Expense". A new window will pop up, prompting you to enter the details for a new expense.
+Keep in mind that "cost" should be an integer.
+- You can generate the second required action related to adding Xs to a Y by selecting delete beside an already present
+expense, in the "Expenses" page.
+- You can locate my visual component by going to the "Main" page, the component should be a progress bar indicating
+your remaining budget for the month.
+- You can save the state of my application by going to the "Main" page, and clicking "Save Budget".
+- You can reload the state of my application by either clicking "okay" when the program asks you when the application
+starts, or by going to the "Main" page, and clicking "Load Budget".
 
 References:
 - JsonSerializationDemo
