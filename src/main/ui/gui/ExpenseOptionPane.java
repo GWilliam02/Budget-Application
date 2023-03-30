@@ -6,6 +6,7 @@ import model.ExpenseList;
 import javax.swing.*;
 import java.awt.*;
 
+//ExpenseOptionPane is a pop-up window that acts as a form for filling in expense details.
 public class ExpenseOptionPane extends JPanel {
 
     private JTextField nameField;
@@ -20,6 +21,8 @@ public class ExpenseOptionPane extends JPanel {
     private String panelName;
     private ExpenseList expenseList;
 
+    //MODIFIES: this
+    //EFFECTS: Create form for editing an expense at the given index in the expense list.
     public ExpenseOptionPane(Expense expense, int index, ExpenseList expenseList) {
         nameField = new JTextField(expense.getName(), 25);
         costField = new JTextField(expense.getCost().toString(), 25);
@@ -34,6 +37,8 @@ public class ExpenseOptionPane extends JPanel {
         buildOptionPane();
     }
 
+    //MODIFIES: this
+    //EFFECTS: Create form for adding a new expense
     public ExpenseOptionPane(ExpenseList expenseList) {
         nameField = new JTextField(25);
         costField = new JTextField(25);
@@ -48,6 +53,8 @@ public class ExpenseOptionPane extends JPanel {
         buildOptionPane();
     }
 
+    //MODIFIES: this
+    //EFFECTS: creates the actual pop-up window
     private void buildOptionPane() {
         setLayout(new GridLayout(0, 1));
         add(new JLabel("Name"));
@@ -67,6 +74,8 @@ public class ExpenseOptionPane extends JPanel {
         optionPaneHandler(result);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Adds/Edits expense depending on user's selection in OK_CANCEL_OPTION window.
     private void optionPaneHandler(int result) {
         if (result == JOptionPane.OK_OPTION) {
             Expense newExpense = new Expense(Integer.parseInt(costField.getText()),

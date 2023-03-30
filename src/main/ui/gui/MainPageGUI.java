@@ -8,12 +8,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//MainPageGUI is a JPanel that displays the possible actions for users to make to their budget
 public class MainPageGUI extends JPanel {
 
     private GridBagConstraints constraints;
     private Budget budget;
     private App app;
 
+    //MODIFIES: this
+    //EFFECTS: Create MainPageGUI Panel and sets layout
     public MainPageGUI(App app, Budget budget) {
         this.budget = budget;
         this.app = app;
@@ -25,6 +28,8 @@ public class MainPageGUI extends JPanel {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: Adds a panel displaying the current budget
     private void addBudget() {
         constraints.gridy = 0;
         constraints.gridx = 1;
@@ -34,6 +39,11 @@ public class MainPageGUI extends JPanel {
         add(budgetPanel, constraints);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Adds a panel containing buttons allowing users to:
+    // 1. Set new budget
+    // 2. Save current budget
+    // 3. Load existing budget
     private void addButtons() {
         constraints.gridy = 1;
         constraints.gridx = 1;
@@ -52,6 +62,8 @@ public class MainPageGUI extends JPanel {
 
     private class ButtonClickHandler implements ActionListener {
 
+        //MODIFIES: this
+        //EFFECTS: Perform actions depending on the button clicked
         @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
@@ -60,10 +72,13 @@ public class MainPageGUI extends JPanel {
             } else if (command.equals("Save")) {
                 app.saveBudget();
             } else if (command.equals("Load")) {
+                app.loadBudget();
                 app.initializeGraphics();
             }
         }
 
+        //MODIFIES: this
+        //EFFECTS: Create a pop-up window prompting users to set a monthly budget
         private void setBudget() {
             JPanel optionPanel = new JPanel(new GridLayout(0, 1));
             optionPanel.add(new JLabel("Monthly Budget:"));

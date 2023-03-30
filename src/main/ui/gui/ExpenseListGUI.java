@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+//ExpenseListGUI is a JPanel that contains all details regarding all the Expenses
 public class ExpenseListGUI extends JPanel {
     private App app;
     private JPanel summaryPanel;
@@ -27,12 +28,15 @@ public class ExpenseListGUI extends JPanel {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: runs all functions to set up panel
     private void initializeGraphics() {
         addSummary();
         addExpenseList();
         addNewExpenseButton();
     }
 
+    //MODIFIES: this
     //EFFECTS: Adds Expense Summary Panel to ExpenseListGUI Panel
     private void addSummary() {
         summaryPanel = new JPanel(new GridLayout(2, 1, 10, 5));
@@ -44,6 +48,7 @@ public class ExpenseListGUI extends JPanel {
         add(summaryPanel);
     }
 
+    //MODIFIES: this
     //EFFECTS: adds ExpenseList Panel to ExpenseListGUI Panel
     private void addExpenseList() {
         int index = 1;
@@ -62,6 +67,8 @@ public class ExpenseListGUI extends JPanel {
         add(expenseListPanel);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Adds Edit/Delete buttons to each expense panel
     private JPanel addButtonsToExpense(Expense expense, int index) {
         JPanel expenseEntry = new JPanel(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -93,6 +100,8 @@ public class ExpenseListGUI extends JPanel {
         return expenseEntry;
     }
 
+    //MODIFIES: this
+    //EFFECTS: creates the "Add Expense" button at bottom of screen
     private void addNewExpenseButton() {
         JButton addButton = new JButton("Add Expense");
         addButton.setActionCommand("addExpense");
@@ -101,6 +110,8 @@ public class ExpenseListGUI extends JPanel {
         add(addButton, BorderLayout.SOUTH);
     }
 
+    //MODIFIES: this
+    //EFFECTS: Clears the panel and re-run setup
     private void reRender() {
         removeAll();
         initializeGraphics();
@@ -111,6 +122,8 @@ public class ExpenseListGUI extends JPanel {
     private class ExpenseOptionHandler implements ActionListener {
 
         @Override
+        //MODIFIES: this
+        //EFFECTS: Performs the specified actions based on the buttons clicked in this panel
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
             int index = -1;
