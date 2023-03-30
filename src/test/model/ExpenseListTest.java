@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ExpenseListTest {
 
@@ -35,6 +35,15 @@ public class ExpenseListTest {
     }
 
     @Test
+    public void testConstructorWithBudget() {
+        Budget budget = new Budget();
+        budget.setExpenseList(expenseList);
+        ExpenseList newExpenseList = new ExpenseList(budget);
+        assertEquals(2, newExpenseList.getExpenseCount());
+        assertTrue(newExpenseList.getExpensesList().contains(e1));
+    }
+
+    @Test
     public void testAddExpense() {
         assertEquals(600, expenseList.getCurrentExpenses());
         expenseList.addExpense(e1);
@@ -47,6 +56,13 @@ public class ExpenseListTest {
         assertEquals(1, expenseList.getExpenseCount());
         assertEquals(500, expenseList.getCurrentExpenses());
         assertEquals(e2, expenseList.getExpenseAtIndex(0));
+    }
+
+    @Test
+    public void removeExpenseAtIndex() {
+        expenseList.removeExpenseAtIndex(0);
+        assertEquals(1, expenseList.getExpenseCount());
+        assertFalse(expenseList.getExpensesList().contains(e1));
     }
 
     @Test

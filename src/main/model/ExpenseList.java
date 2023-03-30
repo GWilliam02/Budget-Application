@@ -19,6 +19,7 @@ public class ExpenseList {
         currentExpenses = 0;
     }
 
+    //EFFECTS: initializes an expense list extracted from the Budget class
     public ExpenseList(Budget budget) {
         this.expensesList = budget.getExpenseList().getExpensesList();
         this.currentExpenses = budget.getExpenseList().getCurrentExpenses();
@@ -42,6 +43,10 @@ public class ExpenseList {
         currentExpenses -= expense.getCost();
     }
 
+    // REQUIRES: index > 0
+    // MODIFIES: this
+    // EFFECTS: removes expense from expense list at given index
+    //          decreases current expense by expense cost.
     public void removeExpenseAtIndex(int index) {
         currentExpenses -= expensesList.get(index).getCost();
         expensesList.remove(index);
