@@ -23,7 +23,6 @@ public class ExpenseListGUI extends JPanel {
         app = application;
         this.expenseList = expenseList;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-//            setLayout(new BorderLayout());
         initializeGraphics();
 
     }
@@ -51,7 +50,6 @@ public class ExpenseListGUI extends JPanel {
         expenseListPanel = new JPanel();
         BoxLayout b = new BoxLayout(expenseListPanel, BoxLayout.Y_AXIS);
         expenseListPanel.setLayout(b);
-//            expenseListPanel.setLayout(new GridBagLayout());
         if (expenseList.getExpenseCount() == 0) {
             expenseListPanel.add(new JLabel("No expenses"));
         } else {
@@ -70,9 +68,8 @@ public class ExpenseListGUI extends JPanel {
         c.insets = new Insets(4, 4, 4, 4);
         c.gridx = 0;
         c.gridy = 0;
-//        c.weightx = 0;
-//        c.weighty = 0;
         c.fill = GridBagConstraints.HORIZONTAL;
+
         expenseEntry.add(new ExpenseGUI(expense, index), c);
 
         c.gridx++;
@@ -101,7 +98,7 @@ public class ExpenseListGUI extends JPanel {
         addButton.setActionCommand("addExpense");
         addButton.addActionListener(new ExpenseOptionHandler());
 
-        add(addButton);
+        add(addButton, BorderLayout.SOUTH);
     }
 
     private void reRender() {
@@ -118,15 +115,15 @@ public class ExpenseListGUI extends JPanel {
             String command = e.getActionCommand();
             int index = -1;
             if (command.contains("delete")) {
-                index = Integer.parseInt(command.substring(6));
+                index = Integer.parseInt(command.substring(6)) - 1;
 
-                expenseList.removeExpenseAtIndex(index - 1);
-                expenseListPanel.remove(index - 1);
+                expenseList.removeExpenseAtIndex(index);
+                expenseListPanel.remove(index);
                 reRender();
 
             } else if (command.contains("edit")) {
-                index = Integer.parseInt(command.substring(4));
-                new ExpenseOptionPane(expenseList.getExpenseAtIndex(index - 1), index - 1, expenseList);
+                index = Integer.parseInt(command.substring(4)) - 1;
+                new ExpenseOptionPane(expenseList.getExpenseAtIndex(index), index, expenseList);
                 reRender();
 
             } else if (command.equals("addExpense")) {
