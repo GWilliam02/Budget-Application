@@ -14,7 +14,9 @@ public class ExpenseOptionPane extends JPanel {
     private JTextField commentsField;
     private JTextField typeField;
     private JTextField dateField;
-    private JTextField recurringField;
+    private Boolean recurringField;
+
+    private ButtonGroup buttonGroup;
 
     private int index = -1; //Determines which expense to edit.
 
@@ -29,7 +31,7 @@ public class ExpenseOptionPane extends JPanel {
         commentsField = new JTextField(expense.getComments(), 50);
         typeField = new JTextField(expense.getPurchaseType(), 25);
         dateField = new JTextField(expense.getPurchaseDate(), 25);
-        recurringField = new JTextField(expense.getRecurring().toString(), 5);
+        recurringField = expense.getRecurring();
 
         panelName = "Edit Expense";
         this.expenseList = expenseList;
@@ -45,7 +47,7 @@ public class ExpenseOptionPane extends JPanel {
         commentsField = new JTextField(50);
         typeField = new JTextField(25);
         dateField = new JTextField(25);
-        recurringField = new JTextField(5);
+        recurringField = null;
 
         panelName = "Create Expense";
         this.expenseList = expenseList;
@@ -68,7 +70,8 @@ public class ExpenseOptionPane extends JPanel {
         add(new JLabel("Purchase Date"));
         add(dateField);
         add(new JLabel("Recurring?"));
-        add(recurringField);
+        add(recurringRadioBox(recurringField));
+
 
         int result = JOptionPane.showConfirmDialog(null, this, panelName, JOptionPane.OK_CANCEL_OPTION);
         optionPaneHandler(result);
@@ -82,13 +85,48 @@ public class ExpenseOptionPane extends JPanel {
                     nameField.getText(),
                     commentsField.getText(),
                     typeField.getText(),
-                    dateField.getText(), true);
+                    dateField.getText(), getButtonSelection());
             if (index != -1) {
                 expenseList.editExpense(newExpense, index);
             } else {
                 expenseList.addExpense(newExpense);
             }
         }
+    }
+
+    //EFFECTS: Returns the current selection of the button group
+    private Boolean getButtonSelection() {
+        if (buttonGroup.getSelection().getActionCommand().equals("true")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //EFFECTS: Returns a JPanel containing radio buttons of true or false.
+    private JPanel recurringRadioBox(Boolean selected) {
+        JPanel radioBoxes = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JRadioButton trueButton = new JRadioButton("True");
+        JRadioButton falseButton = new JRadioButton("False");
+        trueButton.setActionCommand("true");
+        falseButton.setActionCommand("false");
+
+        buttonGroup = new ButtonGroup();
+        buttonGroup.add(trueButton);
+        buttonGroup.add(falseButton);
+
+        radioBoxes.add(trueButton);
+        radioBoxes.add(falseButton);
+
+        if (selected != null) {
+            if (selected) {
+                trueButton.setSelected(true);
+            } else {
+                falseButton.setSelected(true);
+            }
+        }
+
+        return radioBoxes;
     }
 
 }

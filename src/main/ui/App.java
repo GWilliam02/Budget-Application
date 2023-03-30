@@ -32,7 +32,7 @@ public class App extends JFrame {
 
     //MODIFIES: this
     //EFFECTS: Creates the application
-    public App() throws FileNotFoundException {
+    public App() throws FileNotFoundException, InterruptedException {
         super("Budgeting App");
 
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -40,8 +40,22 @@ public class App extends JFrame {
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
+
+        showSplashScreen();
         startUpOption();
         initializeGraphics();
+    }
+
+    //EFFECTS: Creates a loading splash screen with a loading gif
+    private void showSplashScreen() throws InterruptedException {
+        JWindow window = new JWindow();
+        window.getContentPane().add(
+                new JLabel("Loading Application",
+                        new ImageIcon("./data/Spin-1s-200px.gif"), SwingConstants.CENTER));
+        window.setBounds(500, 100, 500, 600);
+        window.setVisible(true);
+        Thread.sleep(3000);
+        window.setVisible(false);
     }
 
     //MODIFIES: this

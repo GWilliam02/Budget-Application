@@ -39,9 +39,10 @@ public class ExpenseListGUI extends JPanel {
     //MODIFIES: this
     //EFFECTS: Adds Expense Summary Panel to ExpenseListGUI Panel
     private void addSummary() {
-        summaryPanel = new JPanel(new GridLayout(2, 1, 10, 5));
+        summaryPanel = new JPanel(new GridLayout(3, 1, 10, 5));
         summaryPanel.setMaximumSize(new Dimension(App.WIDTH, 100));
         summaryPanel.add(new JLabel("Summary of expenses"));
+        summaryPanel.add(new JLabel("Number of expenses: " + expenseList.getExpenseCount()));
         summaryPanel.add(new JLabel("Total expenses this month (In cents): "
                 + expenseList.getCurrentExpenses()));
         summaryPanel.setBorder(BorderFactory.createLineBorder(Color.green)); //Temporary

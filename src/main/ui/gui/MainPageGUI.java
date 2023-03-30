@@ -1,6 +1,7 @@
 package ui.gui;
 
 import model.Budget;
+import model.ExpenseList;
 import ui.App;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ public class MainPageGUI extends JPanel {
 
     private GridBagConstraints constraints;
     private Budget budget;
+    private ExpenseList expenseList;
     private App app;
 
     //MODIFIES: this
@@ -20,6 +22,7 @@ public class MainPageGUI extends JPanel {
     public MainPageGUI(App app, Budget budget) {
         this.budget = budget;
         this.app = app;
+        expenseList = budget.getExpenseList();
         setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
         constraints.ipady = 50;
@@ -33,9 +36,16 @@ public class MainPageGUI extends JPanel {
     private void addBudget() {
         constraints.gridy = 0;
         constraints.gridx = 1;
-        JPanel budgetPanel = new JPanel(new BorderLayout());
-        budgetPanel.add(new JLabel("Current budget this month: " + Integer.toString(budget.getMonthlyBudget())));
-
+        JPanel budgetPanel = new JPanel();
+        BoxLayout boxLayout = new BoxLayout(budgetPanel, BoxLayout.Y_AXIS);
+        budgetPanel.setLayout(boxLayout);
+        JLabel currentB = new JLabel("Current budget this month: " + budget.getMonthlyBudget());
+        JLabel remainingB = new JLabel("Remaining Budget: "
+                + (budget.getMonthlyBudget() - expenseList.getCurrentExpenses()));
+        currentB.setAlignmentX(Component.CENTER_ALIGNMENT);
+        remainingB.setAlignmentX(Component.CENTER_ALIGNMENT);
+        budgetPanel.add(currentB);
+        budgetPanel.add(remainingB);
         add(budgetPanel, constraints);
     }
 
@@ -54,6 +64,7 @@ public class MainPageGUI extends JPanel {
             JButton button = new JButton(buttons[i] + " Budget");
             button.setActionCommand(buttons[i]);
             button.addActionListener(new ButtonClickHandler());
+            button.setAlignmentX(Component.CENTER_ALIGNMENT);
             buttonPanel.add(button);
         }
 
