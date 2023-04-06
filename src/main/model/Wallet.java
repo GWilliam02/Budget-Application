@@ -9,6 +9,7 @@ public class Wallet {
     private int cash;
     private ArrayList<CreditCard> cards;
     private int bankBalance;
+    private EventLog eventLog = EventLog.getInstance();
 
     public Wallet() {
         cash = 0;
@@ -26,8 +27,10 @@ public class Wallet {
         if (bankBalance - amount >= 0) {
             bankBalance -= amount;
             cash += amount;
+            eventLog.logEvent(new Event("Withdrew " + amount + " from bank"));
             return true;
         } else {
+            eventLog.logEvent(new Event("Withdrawal denied: insufficient bank balance"));
             return false;
         }
     }
@@ -42,8 +45,10 @@ public class Wallet {
         if (cash - amount >= 0) {
             bankBalance += amount;
             cash -= amount;
+            eventLog.logEvent(new Event("Deposited " + amount + " into bank"));
             return true;
         } else {
+            eventLog.logEvent(new Event("Deposit denied, insufficient cash"));
             return false;
         }
     }
@@ -52,6 +57,7 @@ public class Wallet {
     // MODIFIES: this
     // EFFECTS: adds credit card (cc) to cards
     public void addCreditCard(CreditCard cc) {
+        eventLog.logEvent(new Event("New credit card added: " + cc.getName()));
         cards.add(cc);
     }
 
@@ -59,6 +65,7 @@ public class Wallet {
     // MODIFIES: this
     // EFFECTS: remove credit card (cc) from cards
     public void removeCreditCard(CreditCard cc) {
+        eventLog.logEvent(new Event("Credit card removed: " + cc.getName()));
         cards.remove(cc);
     }
 
@@ -71,6 +78,7 @@ public class Wallet {
                 result = cc;
             }
         }
+        eventLog.logEvent(new Event(result + " Credit card taken out of wallet"));
         return result;
     }
 

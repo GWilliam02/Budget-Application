@@ -9,6 +9,7 @@ public class Budget {
     private Wallet wallet;
     private ExpenseList expenseList;
     private int monthlyBudget;
+    private EventLog eventLog = EventLog.getInstance();
 
     public Budget() {
         wallet = new Wallet();
@@ -22,6 +23,7 @@ public class Budget {
         json.put("monthlyBudget", monthlyBudget);
         json.put("wallet", walletToJson());
         json.put("expenseList", expenseListToJson());
+        eventLog.logEvent(new Event("Application Saved as JSON Object"));
         return json;
     }
 
@@ -68,6 +70,7 @@ public class Budget {
     }
 
     public void setMonthlyBudget(int monthlyBudget) {
+        eventLog.logEvent(new Event(monthlyBudget + " set as monthly budget"));
         this.monthlyBudget = monthlyBudget;
     }
 

@@ -19,16 +19,19 @@ public class MainPageGUI extends JPanel {
 
     //MODIFIES: this
     //EFFECTS: Create MainPageGUI Panel and sets layout
-    public MainPageGUI(App app, Budget budget) {
+    public MainPageGUI(App app, Budget budget, ExpenseList expenseList) {
         this.budget = budget;
         this.app = app;
-        expenseList = budget.getExpenseList();
+        this.expenseList = expenseList;
         setLayout(new GridBagLayout());
         constraints = new GridBagConstraints();
         constraints.ipady = 50;
+        initializeGraphics();
+    }
+
+    public void initializeGraphics() {
         addBudget();
         addButtons();
-
     }
 
     //MODIFIES: this
@@ -99,6 +102,7 @@ public class MainPageGUI extends JPanel {
                     "Edit Monthly Budget", JOptionPane.OK_CANCEL_OPTION);
             if (result == JOptionPane.OK_OPTION) {
                 budget.setMonthlyBudget(Integer.parseInt(budgetField.getText()));
+                app.initializeGraphics();
             }
         }
     }

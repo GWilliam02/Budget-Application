@@ -15,25 +15,25 @@
         "bankBalance": 50000,
         "cash": 2000
     },
-    "monthlyBudget": 100000,
+    "monthlyBudget": 120000,
     "expenseList": {
-        "currentExpenses": 12100,
+        "currentExpenses": 7100,
         "expensesList": [
             {
-                "purchaseDate": "December 25",
-                "cost": 100,
-                "comments": "vegetables",
-                "recurring": true,
-                "name": "save-on-foods",
-                "purchaseType": "food"
+                "purchaseDate": "Jun 28 2021",
+                "cost": 5500,
+                "comments": "New computer",
+                "recurring": false,
+                "name": "Bestbuy",
+                "purchaseType": "Shopping"
             },
             {
-                "purchaseDate": "jun 27 2021",
-                "cost": 7000,
-                "comments": "new computer",
+                "purchaseDate": "July 4 2022",
+                "cost": 500,
+                "comments": "Vitamins",
                 "recurring": false,
-                "name": "bestbuy",
-                "purchaseType": "shopping"
+                "name": "Coscto",
+                "purchaseType": "Food"
             }
         ]
     }

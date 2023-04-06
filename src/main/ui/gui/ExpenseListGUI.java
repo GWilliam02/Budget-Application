@@ -30,7 +30,7 @@ public class ExpenseListGUI extends JPanel {
 
     //MODIFIES: this
     //EFFECTS: runs all functions to set up panel
-    private void initializeGraphics() {
+    public void initializeGraphics() {
         addSummary();
         addExpenseList();
         addNewExpenseButton();

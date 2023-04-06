@@ -1,6 +1,8 @@
 package ui;
 
 import model.Budget;
+import model.Event;
+import model.EventLog;
 import model.ExpenseList;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -11,11 +13,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import static java.lang.System.exit;
+
 //App is the main JFrame application
-public class App extends JFrame {
+public class App extends JFrame implements WindowListener {
 
     public static final String JSON_STORE = "./data/testBudget1.json";
     public static final int WIDTH = 1000;
@@ -30,6 +36,8 @@ public class App extends JFrame {
     private ExpenseList expenseList;
     private Budget budgetApp;
 
+    private EventLog eventLog = EventLog.getInstance();
+
     //MODIFIES: this
     //EFFECTS: Creates the application
     public App() throws FileNotFoundException, InterruptedException {
@@ -38,8 +46,10 @@ public class App extends JFrame {
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
+
+        addWindowListener(this);
 
         showSplashScreen();
         startUpOption();
@@ -104,8 +114,12 @@ public class App extends JFrame {
     private void addCardsToPane() {
         CardLayout cl = new CardLayout();
         cards = new JPanel(cl);
-        cards.add("Expenses", new ExpenseListGUI(this, expenseList));
-        cards.add("Home", new MainPageGUI(this, budgetApp));
+
+        expenseListGUI =  new ExpenseListGUI(this, expenseList);
+        mainPageGUI = new MainPageGUI(this, budgetApp, expenseList);
+
+        cards.add("Expenses",expenseListGUI);
+        cards.add("Home", mainPageGUI);
         cl.show(cards, "Home");
         add(cards);
     }
@@ -117,7 +131,6 @@ public class App extends JFrame {
         try {
             budgetApp = jsonReader.readBudget();
             expenseList = new ExpenseList(budgetApp);
-            System.out.println("Loaded BudgetApp from: " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read data from file: " + JSON_STORE);
         }
@@ -129,12 +142,37 @@ public class App extends JFrame {
             jsonWriter.open();
             jsonWriter.write(budgetApp);
             jsonWriter.close();
-            System.out.println("Saved Budget Progress to" + JSON_STORE);
 
         } catch (FileNotFoundException e) {
             System.out.println("Unable to save to file: " + JSON_STORE);
         }
     }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        for (Event event: eventLog) {
+            System.out.println(event);
+        }
+        exit(0);
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {}
+
+    @Override
+    public void windowClosing(WindowEvent e) {}
+
+    @Override
+    public void windowIconified(WindowEvent e) {}
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {}
+
+    @Override
+    public void windowActivated(WindowEvent e) {}
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {}
 
     private class DirectoryClickHandler implements ActionListener {
 
@@ -143,6 +181,9 @@ public class App extends JFrame {
         public void actionPerformed(ActionEvent e) {
             CardLayout cl = (CardLayout) cards.getLayout();
             cl.show(cards, e.getActionCommand());
+            if (e.getActionCommand().equals("Home")) {
+                initializeGraphics();
+            }
         }
     }
 

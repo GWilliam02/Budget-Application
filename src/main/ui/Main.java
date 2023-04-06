@@ -9,7 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            new App();
+            new App(); //GUI
+//            new BudgetTool(); //Console
         } catch (FileNotFoundException e) {
             System.out.println("Application cannot be started: no file found");
         } catch (InterruptedException e) {

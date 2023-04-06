@@ -7,6 +7,7 @@ public class CreditCard {
     private String name;
     private int balance;
     private int limit;
+    private EventLog eventLog = EventLog.getInstance();
 
     public CreditCard(String name, int balance, int limit) {
         this.name = name;
@@ -22,8 +23,10 @@ public class CreditCard {
     public boolean spend(int cost) {
         if (balance + cost <= limit) {
             balance += cost;
+            eventLog.logEvent(new Event("Spent " + cost + " with " + name + "credit card"));
             return true;
         } else {
+            eventLog.logEvent(new Event(name + "Credit card transaction failed: limit exceeded"));
             return false;
         }
     }
@@ -36,8 +39,11 @@ public class CreditCard {
     public boolean payBill(int amount) {
         if (balance - amount >= 0) {
             balance -= amount;
+            eventLog.logEvent(new Event(amount + " was paid to " + name + " Credit card's balance"));
             return true;
         } else {
+            eventLog.logEvent(new Event("Unable to pay " + name
+                    + "Credit card's bill: amount greater than balance"));
             return false;
         }
     }

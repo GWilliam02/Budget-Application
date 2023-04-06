@@ -8,6 +8,7 @@ public class ExpenseList {
 
     private ArrayList<Expense> expensesList;
     private int currentExpenses;
+    private EventLog eventLog = EventLog.getInstance();
 
 
     //private String month;
@@ -15,12 +16,16 @@ public class ExpenseList {
     //EFFECTS: currentExpenses is set to 0,
     //          initializes empty expense list.
     public ExpenseList() {
+        eventLog.clear();
+        eventLog.logEvent(new Event("New budget app created."));
         expensesList = new ArrayList<>();
         currentExpenses = 0;
     }
 
     //EFFECTS: initializes an expense list extracted from the Budget class
     public ExpenseList(Budget budget) {
+        eventLog.clear();
+        eventLog.logEvent(new Event("Existing budget app loaded from file."));
         this.expensesList = budget.getExpenseList().getExpensesList();
         this.currentExpenses = budget.getExpenseList().getCurrentExpenses();
     }
@@ -30,6 +35,7 @@ public class ExpenseList {
     // EFFECTS: adds expense to expense list,
     //          increases current expense by expense cost
     public void addExpense(Expense expense) {
+        eventLog.logEvent(new Event("New expense has been added: " + expense.getName()));
         expensesList.add(expense);
         currentExpenses += expense.getCost();
     }
@@ -39,6 +45,7 @@ public class ExpenseList {
     // EFFECTS: removes expense from expense list
     //          decreases current expense by expense cost.
     public void removeExpense(Expense expense) {
+        eventLog.logEvent((new Event("The following expense has been deleted: " + expense.getName())));
         expensesList.remove(expense);
         currentExpenses -= expense.getCost();
     }
@@ -48,6 +55,8 @@ public class ExpenseList {
     // EFFECTS: removes expense from expense list at given index
     //          decreases current expense by expense cost.
     public void removeExpenseAtIndex(int index) {
+        eventLog.logEvent((new Event("The following expense has been deleted: "
+                + expensesList.get(index).getName())));
         currentExpenses -= expensesList.get(index).getCost();
         expensesList.remove(index);
     }
@@ -57,6 +66,7 @@ public class ExpenseList {
     // EFFECTS: Replaces expense at the given index with new expense
     //          recalculates current expenses
     public void editExpense(Expense expense, int index) {
+        eventLog.logEvent((new Event("The following expense has been edited: " + expense.getName())));
         expensesList.set(index, expense);
         currentExpenses = calculateExpenses();
     }
