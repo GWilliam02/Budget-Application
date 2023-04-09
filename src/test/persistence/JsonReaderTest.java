@@ -47,16 +47,16 @@ public class JsonReaderTest extends JsonTest {
         JsonReader jsonReader = new JsonReader("./data/testBudget1.json");
         try {
             Budget budget = jsonReader.readBudget();
-            assertEquals(100000, budget.getMonthlyBudget());
+            assertEquals(120000, budget.getMonthlyBudget());
 
             Expense exp1 = budget.getExpenseList().getExpenseAtIndex(0);
             Expense exp2 = budget.getExpenseList().getExpenseAtIndex(1);
-            assertEquals(7100, budget.getExpenseList().getCurrentExpenses());
+            assertEquals(6000, budget.getExpenseList().getCurrentExpenses());
             assertEquals(2, budget.getExpenseList().getExpenseCount());
-            checkExpense(100, "save-on-foods", "vegetables",
-                    "food", "December 25", true, exp1);
-            checkExpense(7000, "bestbuy", "new computer",
-                    "shopping", "jun 27 2021", false, exp2);
+            checkExpense(5500, "Bestbuy", "New computer",
+                    "Shopping", "Jun 28 2021", false, exp1);
+            checkExpense(500, "Costco", "Vitamins",
+                    "Food", "July 4 2022", false, exp2);
 
 
             CreditCard cc1 = budget.getWallet().getCards().get(0);
