@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 //ExpenseListGUI is a JPanel that contains all details regarding all the Expenses
 public class ExpenseListGUI extends JPanel {
-    private App app;
     private JPanel summaryPanel;
     private JPanel expenseListPanel;
     private ExpenseList expenseList;
@@ -20,8 +19,7 @@ public class ExpenseListGUI extends JPanel {
     private ArrayList<JButton> editButtons = new ArrayList<>();
     private ArrayList<JButton> deleteButtons = new ArrayList<>();
 
-    public ExpenseListGUI(App application, ExpenseList expenseList) {
-        app = application;
+    public ExpenseListGUI(ExpenseList expenseList) {
         this.expenseList = expenseList;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         initializeGraphics();

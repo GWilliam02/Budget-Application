@@ -115,7 +115,7 @@ public class App extends JFrame implements WindowListener {
         CardLayout cl = new CardLayout();
         cards = new JPanel(cl);
 
-        expenseListGUI =  new ExpenseListGUI(this, expenseList);
+        expenseListGUI =  new ExpenseListGUI(expenseList);
         mainPageGUI = new MainPageGUI(this, budgetApp, expenseList);
 
         cards.add("Expenses",expenseListGUI);

@@ -71,13 +71,32 @@ Existing budget app loaded from file.\
 Thu Apr 06 09:39:10 PDT 2023\
 120000 set as monthly budget\
 Thu Apr 06 09:39:55 PDT 2023\
-New expense has been added: Coscto\
+New expense has been added: Costco\
 Thu Apr 06 09:40:06 PDT 2023\
 The following expense has been deleted: save-on-foods\
 Thu Apr 06 09:40:30 PDT 2023\
 The following expense has been edited: Bestbuy\
 Thu Apr 06 09:40:37 PDT 2023\
 Application Saved as JSON Object
+
+#### Task 3: Reflection on UML Class Diagram ####
+
+During development, there appears to be a substantial amount of coupling between various classes and the ExpenseList
+class. Most classes that had a dependency on ExpenseList were tightly coupled and changing the ExpenseList class 
+required changes in others. To fix this, implementations were done in the class that depended on ExpenseList, which led
+to repetitiveness in the code. It was also challenging to keep track of the pointers to ExpenseList in each class,
+as there were occasions where a new class was created when a pointer to an existing object was meant to be duplicated.
+To fix this, the Singleton method could be used as only one instance of ExpenseList should be present in the 
+application. To make it easier to add new functionality in the future, the methods in several classes could be
+abstracted. For example, a function could be dedicated to adding a "delete" or "edit" button to a JPanel could be
+produced, instead of writing it in the method that builds the parent component.
+
+For the GUI component, it may be more efficient to re-render the whole window from the 
+App class, which is the parent container that contains the ExpenseListGUI and MainPageGUI. Doing so would allow both
+pages to be updated with information when something is changed in one page. (Which is not a feature
+as of now). This would also decrease coupling as the MainPageGUI would not require an instance
+of ExpenseList since the desired information could be passed into the MainPageGUI class directly upon
+updating the App class.
 
 
 
