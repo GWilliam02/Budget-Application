@@ -54,6 +54,7 @@ public class App extends JFrame implements WindowListener {
         showSplashScreen();
         startUpOption();
         initializeGraphics();
+
     }
 
     //EFFECTS: Creates a loading splash screen with a loading gif
